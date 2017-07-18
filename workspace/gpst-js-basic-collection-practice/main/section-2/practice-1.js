@@ -14,7 +14,16 @@ function map2Array(map) {
 function countSameElements(collection) {
     var elemMap = new Object();
 
-    return;
+    for (var i = 0; i < collection.length; ++i) {
+        var v = collection[i];
+        if (typeof elemMap[v] == "undefined") {
+            elemMap[v] = 1;
+        } else {
+            elemMap[v] += 1;
+        }
+    }
+
+    return map2Array(elemMap);
 }
 
 module.exports = {

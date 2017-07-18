@@ -1,5 +1,16 @@
 'use strict';
 
+function map2Array(map) {
+    var arr = new Array();
+    for (var key in map) {
+        var item = new Object();
+        item.name = key;
+        item.summary = map[key];
+        arr.push(item);
+    }
+    return arr;
+}
+
 function getElemCount(str) {
   if (str.length == 1) {
     return 1;
@@ -14,10 +25,14 @@ function getElemCount(str) {
 }
 
 function countSameElements(collection) {
-  return '实现练习要求，并改写该行代码。';
+    var map = new Object();
+
+
+    return map2Array(map);
 }
 
 module.exports = {
   countSameElements: countSameElements,
-    getElemCount: getElemCount
+    getElemCount: getElemCount,
+    map2Array: map2Array
 };

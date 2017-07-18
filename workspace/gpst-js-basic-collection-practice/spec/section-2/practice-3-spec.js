@@ -1,6 +1,7 @@
 'use strict';
 const countSameElements = require('../../main/section-2/practice-3').countSameElements;
 const getElemCount = require('../../main/section-2/practice-3').getElemCount;
+const map2Array = require('../../main/section-2/practice-3').map2Array;
 
 describe('practice-2-3', () => {
 
@@ -50,4 +51,13 @@ describe("practice-2-3-getElemCount", () => {
   it("Count of t[11] should be 11.", () => {
     expect(getElemCount("t[11]")).toEqual(11);
   });
+});
+
+describe("practice-2-3-map2Array", () => {
+  it("Convert map to array of objects.", () => {
+    expect(map2Array({a: 2, b: 3})).toEqual([
+        {name: 'a', summary: 2},
+        {name: 'b', summary: 3}
+    ]);
+});
 });

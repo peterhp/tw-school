@@ -1,5 +1,6 @@
 'use strict';
-const createUpdatedCollection = require('../../main/section-3/practice-2');
+const createUpdatedCollection = require('../../main/section-3/practice-2').createUpdatedCollection;
+const each3Sub1 = require('../../main/section-3/practice-2').each3Sub1;
 
 describe('practice-3-2', () => {
 
@@ -32,5 +33,19 @@ describe('practice-3-2', () => {
       {key: 'b', count: 6},
       {key: 'd', count: 4}
     ]);
+  });
+});
+
+describe("practice-3-2-each3Sub1", () => {
+  it("Should return 1 for 1", () => {
+    expect(each3Sub1(1)).toEqual(1);
+  });
+
+  it("Should return 4 for 5", () => {
+    expect(each3Sub1(5)).toEqual(4);
+  });
+
+  it("Should return 4 for 6", () => {
+    expect(each3Sub1(6)).toEqual(4);
   });
 });

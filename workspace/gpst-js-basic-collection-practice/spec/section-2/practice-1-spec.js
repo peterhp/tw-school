@@ -1,5 +1,6 @@
 'use strict';
-const countSameElements = require('../../main/section-2/practice-1');
+const countSameElements = require('../../main/section-2/practice-1').countSameElements;
+const map2Array = require('../../main/section-2/practice-1').map2Array;
 
 describe('practice-2-1', () => {
 
@@ -30,5 +31,17 @@ describe('practice-2-1', () => {
       {key: 'b', count: 6},
       {key: 'd', count: 5}
     ]);
+  });
+});
+
+describe("practice-2-1-map2Array", () => {
+  it("Convert map into array of objects with single field.", () => {
+    const ret = map2Array({a: 2, b: 3});
+    const exp = [
+        {key: "a", count: 2},
+        {key: "b", count: 3}
+    ];
+
+    expect(ret).toEqual(exp);
   });
 });

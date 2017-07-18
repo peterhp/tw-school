@@ -1,5 +1,23 @@
 'use strict';
 
-module.exports = function countSameElements(collection) {
-  return '实现练习要求，并改写该行代码。';
+function map2Array(map) {
+    var arr = new Array();
+    for (var key in map) {
+        var item = new Object();
+        item.key = key;
+        item.count = map[key];
+        arr.push(item);
+    }
+    return arr;
 }
+
+function countSameElements(collection) {
+    var elemMap = new Object();
+
+    return;
+}
+
+module.exports = {
+    map2Array: map2Array,
+    countSameElements: countSameElements
+};

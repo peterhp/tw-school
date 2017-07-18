@@ -27,6 +27,16 @@ function getElemCount(str) {
 function countSameElements(collection) {
     var map = new Object();
 
+    for (var i = 0; i < collection.length; ++i) {
+        var c = collection[i].charAt(0);
+        var count = getElemCount(collection[i]);
+
+        if (typeof map[c] == "undefined") {
+            map[c] = count;
+        } else {
+            map[c] += count;
+        }
+    }
 
     return map2Array(map);
 }

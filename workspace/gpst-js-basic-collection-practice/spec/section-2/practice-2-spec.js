@@ -1,5 +1,7 @@
 'use strict';
-const countSameElements = require('../../main/section-2/practice-2');
+const countSameElements = require('../../main/section-2/practice-2').countSameElements;
+const getElemCount = require('../../main/section-2/practice-2').getElemCount;
+
 
 describe('practice-2-2', () => {
 
@@ -30,5 +32,15 @@ describe('practice-2-2', () => {
       {key: 'b', count: 6},
       {key: 'd', count: 5}
     ]);
+  });
+});
+
+describe("practice-2-2-getElemCount", () => {
+  it("Count of single letter should be 1.", () => {
+    expect(getElemCount("a")).toEqual(1);
+  });
+
+  it("Count of letter with 5 should be 5.", () => {
+    expect(getElemCount("b-5")).toEqual(5);
   });
 });

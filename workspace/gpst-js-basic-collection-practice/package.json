@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "node run-tests.js"
+    "test": "node run-tests.js",
+    "test-single": "./node_modules/jasmine/bin/jasmine.js"
   },
   "repository": {
     "type": "git",

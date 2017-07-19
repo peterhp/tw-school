@@ -25,10 +25,11 @@ describe("cart parser", () => {
     ];
 
     it ("should get cart for array of item strings", () => {
-        expect(parseCart(strItemArray)).toEqual([
-            {barcode: "ITEM000001", quantity: 2},
-            {barcode: "ITEM000002", quantity: 2},
-            {barcode: "ITEM000003", quantity: 2.5}
-        ]);
+        expect(parseCart(strItemArray)).toEqual({
+            items: [
+                {barcode: "ITEM000001", quantity: 2},
+                {barcode: "ITEM000002", quantity: 2},
+                {barcode: "ITEM000003", quantity: 2.5}
+        ]});
     });
 });

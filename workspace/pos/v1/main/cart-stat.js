@@ -24,16 +24,20 @@ function calcActualCost(item) {
 
 function calcCartOriginalCost(cart) {
     var cost = 0;
-    for (var i = 0; i < cart.length; ++i) {
-        cost += calcOriginalCost(cart[i]);
+    for (var i = 0; i < cart.items.length; ++i) {
+        cost += calcOriginalCost(cart.items[i]);
     }
     return cost;
 }
 
 function calcCartSaving(cart) {
     var saving = 0;
-    for (var i = 0; i < cart.length; ++i) {
-        saving += calcSaving(cart[i]);
+    for (var i = 0; i < cart.items.length; ++i) {
+        saving += calcSaving(cart.items[i]);
     }
     return saving;
+}
+
+function calcCartActualCost(cart) {
+    return calcCartOriginalCost(cart) - calcCartSaving(cart);
 }

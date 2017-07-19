@@ -25,9 +25,9 @@ function genItemArray(strItemArray) {
 
 function findItem(cart, barcode) {
     var obj = null;
-    for (var i = 0; i < cart.length; ++i) {
-        if (cart[i].barcode === barcode) {
-            obj = cart[i];
+    for (var i = 0; i < cart.items.length; ++i) {
+        if (cart.items[i].barcode === barcode) {
+            obj = cart.items[i];
             break;
         }
     }
@@ -39,14 +39,14 @@ function addItemIntoCart(cart, newItem) {
     if (item) {
         item.quantity += newItem.quantity;
     } else {
-        cart.push(newItem);
+        cart.items.push(newItem);
     }
 }
 
 function parseCart(strItemArray) {
     var items = genItemArray(strItemArray);
 
-    var cart = [];
+    var cart = {items: []};
     for (var i = 0; i < items.length; ++i) {
         addItemIntoCart(cart, items[i]);
     }

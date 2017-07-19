@@ -23,7 +23,7 @@ describe("Cart Statistics", () => {
         expect(calcActualCost(promItem)).toEqual(6.00);
     });
 
-    const cart = [promItem, normItem];
+    const cart = {items:[promItem, normItem]};
 
     it("Should return original cost of all items in cart.", () => {
         expect(calcCartOriginalCost(cart)).toEqual(15.00);
@@ -31,5 +31,9 @@ describe("Cart Statistics", () => {
 
     it("Should return saving of all items in cart.",  () => {
         expect(calcCartSaving(cart)).toEqual(3.00);
+    });
+
+    it("Should return actual cost of all items in cart.", () => {
+        expect(calcCartActualCost(cart)).toEqual(12.00);
     });
 });

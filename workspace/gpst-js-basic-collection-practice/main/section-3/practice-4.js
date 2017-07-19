@@ -42,17 +42,22 @@ function countElem(collection) {
   return elemArr;
 }
 
-module.exports = function createUpdatedCollection(collectionA, objectB) {
-  var elemArr = countElem(collectionA);
-
+function subCommElem(elemArr, keyArr) {
   for (var i = 0; i < elemArr.length; ++i) {
     var elem = elemArr[i];
-    for (var j = 0; j < objectB.value.length; ++j) {
-      if (elem.key === objectB.value[j]) {
+
+    for (var j = 0; j < keyArr.length; ++j) {
+      if (elem.key === keyArr[j]) {
         elem.count = each3Sub1(elem.count);
       }
     }
   }
+}
 
+module.exports = function createUpdatedCollection(collectionA, objectB) {
+  var elemArr = countElem(collectionA);
+
+  subCommElem(elemArr, objectB.value);
+  
   return elemArr;
 }

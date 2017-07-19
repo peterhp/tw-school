@@ -41,3 +41,20 @@ function calcCartSaving(cart) {
 function calcCartActualCost(cart) {
     return calcCartOriginalCost(cart) - calcCartSaving(cart);
 }
+
+function updateCart(cart) {
+    var cost = 0;
+    var saving = 0;
+
+    for (var i = 0; i < cart.items.length; ++i) {
+        var itemCost = calcItemActualCost(cart.items[i]);
+        var itemSaving = calcItemSaving(cart.items[i]);
+        cart.items[i].actualCost = itemCost;
+
+        cost += itemCost;
+        saving += itemSaving;
+    }
+
+    cart.actualCost = cost;
+    cart.saving = saving;
+}

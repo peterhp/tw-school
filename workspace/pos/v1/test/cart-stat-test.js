@@ -36,4 +36,11 @@ describe("Cart Statistics", () => {
     it("Should return actual cost of all items in cart.", () => {
         expect(calcCartActualCost(cart)).toEqual(12.00);
     });
+
+    it("Should update cart statistics.", () => {
+        updateCart(cart);
+        expect(cart.actualCost).toEqual(12.00);
+        expect(cart.saving).toEqual(3.00);
+        expect(cart.items[0].actualCost).toEqual(6.00);
+    });
 });

@@ -18,4 +18,10 @@ describe("Cart Statistics", () => {
     it("Should get saving for item on promotion.", () => {
         expect(calcSaving(promItem)).toEqual(3.00);
     });
+
+    const cart = [promItem, normItem];
+
+    it("Should return original cost of all items in cart.", () => {
+        expect(calcCartOriginalCost(cart)).toEqual(15.00);
+    });
 });

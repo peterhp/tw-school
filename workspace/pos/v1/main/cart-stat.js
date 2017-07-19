@@ -17,3 +17,11 @@ function calcSaving(item) {
 
     return saving;
 }
+
+function calcCartOriginalCost(cart) {
+    var cost = 0;
+    for (var i = 0; i < cart.length; ++i) {
+        cost += calcOriginalCost(cart[i]);
+    }
+    return cost;
+}

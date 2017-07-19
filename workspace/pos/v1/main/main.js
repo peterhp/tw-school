@@ -14,3 +14,18 @@ function findCommodity(barcode) {
     }
     return commodity;
 }
+
+var promotions = loadPromotions();
+
+function findPromotion(barcode) {
+    var promotion = null;
+    for (var i = 0; i < promotions.length; ++i) {
+        for (var j = 0; j < promotions[i].barcodes.length; ++j) {
+            if (promotions[i].barcodes[j] === barcode) {
+                promotion = promotions[i];
+                break;
+            }
+        }
+    }
+    return promotion;
+}

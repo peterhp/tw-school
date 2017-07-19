@@ -14,4 +14,8 @@ describe("Cart Statistics", () => {
     it("Should get no saving for item not on promotion.", () => {
         expect(calcSaving(normItem)).toEqual(0);
     });
+
+    it("Should get saving for item on promotion.", () => {
+        expect(calcSaving(promItem)).toEqual(3.00);
+    });
 });

@@ -11,8 +11,8 @@ function calcSaving(item) {
     var saving = 0;
 
     var promotion = findPromotion(item.barcode);
-    if (!promotion) {
-        saving = 0;
+    if (promotion && promotion.type === "BUY_TWO_GET_ONE_FREE") {
+        saving = savingForBuy2Free1(item);
     }
 
     return saving;

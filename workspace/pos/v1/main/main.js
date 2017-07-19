@@ -29,3 +29,7 @@ function findPromotion(barcode) {
     }
     return promotion;
 }
+
+function savingForBuy2Free1(item) {
+    return (item.quantity >= 2 ? findCommodity(item.barcode).price : 0);
+}

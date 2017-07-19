@@ -24,4 +24,8 @@ describe("Cart Statistics", () => {
     it("Should return original cost of all items in cart.", () => {
         expect(calcCartOriginalCost(cart)).toEqual(15.00);
     });
+
+    it("Should return saving of all items in cart.",  () => {
+        expect(calcCartSaving(cart)).toEqual(3.00);
+    });
 });

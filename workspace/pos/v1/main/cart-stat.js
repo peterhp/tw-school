@@ -25,3 +25,11 @@ function calcCartOriginalCost(cart) {
     }
     return cost;
 }
+
+function calcCartSaving(cart) {
+    var saving = 0;
+    for (var i = 0; i < cart.length; ++i) {
+        saving += calcSaving(cart[i]);
+    }
+    return saving;
+}

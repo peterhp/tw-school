@@ -1,12 +1,9 @@
 'use strict';
 
 function map2Array(map) {
-    var arr = new Array();
+    var arr = [];
     for (var key in map) {
-        var item = new Object();
-        item.key = key;
-        item.count = map[key];
-        arr.push(item);
+        arr.push({key: key, count: map[key]});
     }
     return arr;
 }
@@ -16,7 +13,7 @@ function countSameElements(collection) {
 
     for (var i = 0; i < collection.length; ++i) {
         var v = collection[i];
-        if (typeof elemMap[v] == "undefined") {
+        if (typeof elemMap[v] === "undefined") {
             elemMap[v] = 1;
         } else {
             elemMap[v] += 1;

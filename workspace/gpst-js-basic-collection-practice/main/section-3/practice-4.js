@@ -58,6 +58,6 @@ module.exports = function createUpdatedCollection(collectionA, objectB) {
   var elemArr = countElem(collectionA);
 
   subCommElem(elemArr, objectB.value);
-  
+
   return elemArr;
 }

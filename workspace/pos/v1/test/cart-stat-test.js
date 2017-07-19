@@ -8,19 +8,19 @@ describe("Cart Statistics", () => {
     const normItem = {barcode: "ITEM000004", quantity: 3};
 
     it("Should return original cost of the item.", () => {
-        expect(calcOriginalCost(promItem)).toEqual(9);
+        expect(calcItemOriginalCost(promItem)).toEqual(9);
     });
 
     it("Should get no saving for item not on promotion.", () => {
-        expect(calcSaving(normItem)).toEqual(0);
+        expect(calcItemSaving(normItem)).toEqual(0);
     });
 
     it("Should get saving for item on promotion.", () => {
-        expect(calcSaving(promItem)).toEqual(3.00);
+        expect(calcItemSaving(promItem)).toEqual(3.00);
     });
 
     it("Should return actual cost of item.", () => {
-        expect(calcActualCost(promItem)).toEqual(6.00);
+        expect(calcItemActualCost(promItem)).toEqual(6.00);
     });
 
     const cart = {items:[promItem, normItem]};

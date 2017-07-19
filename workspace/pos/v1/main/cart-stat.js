@@ -2,12 +2,12 @@
  * Created by Shli on 19/07/2017.
  */
 
-function calcOriginalCost(item) {
+function calcItemOriginalCost(item) {
     var commodity = findCommodity(item.barcode);
     return (commodity.price * item.quantity);
 }
 
-function calcSaving(item) {
+function calcItemSaving(item) {
     var saving = 0;
 
     var promotion = findPromotion(item.barcode);
@@ -18,14 +18,14 @@ function calcSaving(item) {
     return saving;
 }
 
-function calcActualCost(item) {
-    return calcOriginalCost(item) - calcSaving(item);
+function calcItemActualCost(item) {
+    return calcItemOriginalCost(item) - calcItemSaving(item);
 }
 
 function calcCartOriginalCost(cart) {
     var cost = 0;
     for (var i = 0; i < cart.items.length; ++i) {
-        cost += calcOriginalCost(cart.items[i]);
+        cost += calcItemOriginalCost(cart.items[i]);
     }
     return cost;
 }
@@ -33,7 +33,7 @@ function calcCartOriginalCost(cart) {
 function calcCartSaving(cart) {
     var saving = 0;
     for (var i = 0; i < cart.items.length; ++i) {
-        saving += calcSaving(cart.items[i]);
+        saving += calcItemSaving(cart.items[i]);
     }
     return saving;
 }

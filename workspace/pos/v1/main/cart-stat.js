@@ -18,6 +18,10 @@ function calcSaving(item) {
     return saving;
 }
 
+function calcActualCost(item) {
+    return calcOriginalCost(item) - calcSaving(item);
+}
+
 function calcCartOriginalCost(cart) {
     var cost = 0;
     for (var i = 0; i < cart.length; ++i) {

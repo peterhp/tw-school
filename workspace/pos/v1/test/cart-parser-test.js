@@ -16,5 +16,19 @@ describe("cart parser", () => {
             quantity: 2.5
         });
     });
-});
 
+    const strItemArray = [
+        "ITEM000001",
+        "ITEM000002-2",
+        "ITEM000003-2.5",
+        "ITEM000001"
+    ];
+
+    it ("should get cart for array of item strings", () => {
+        expect(parseCart(strItemArray)).toEqual([
+            {barcode: "ITEM000001", quantity: 2},
+            {barcode: "ITEM000002", quantity: 2},
+            {barcode: "ITEM000003", quantity: 2.5}
+        ]);
+    });
+});

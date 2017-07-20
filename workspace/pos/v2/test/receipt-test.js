@@ -14,4 +14,11 @@ describe("Generate receipt for cart.", () => {
         expect(calcItemSaving(normItem)).toEqual(0.00);
     });
 
+    it("Should get receipt info for cart item.", () => {
+        expect(calcItemReceipt(promItem)).toEqual(
+            new ReceiptItem(promItem, 12.00, 3.00));
+        expect(calcItemReceipt(normItem)).toEqual(
+            new ReceiptItem(normItem, 10.00, 0.00));
+    });
+
 });

@@ -4,9 +4,9 @@
 
 describe("Generate receipt for cart.", () => {
 
-    let promItem = new CartItem(
+    const promItem = new CartItem(
         new Item('ITEM000001', '雪碧', '瓶', 3.00), 5);
-    let normItem = new CartItem(
+    const normItem = new CartItem(
         new Item('ITEM000004', '电池', '个', 2.00), 5);
 
     it("Should calculate saving for cart item.", () => {
@@ -27,6 +27,19 @@ describe("Generate receipt for cart.", () => {
 
         expect(calcTotalCost(itemReceipts)).toEqual(22.00);
         expect(calcTotalSaving(itemReceipts)).toEqual(3.00);
+    });
+
+    const cart = new Cart();
+    cart.add(promItem);
+    cart.add(normItem);
+
+    it("Should get receipt for cart.", () => {
+        const receipt = genReceipt(cart);
+
+        expect(receipt.items.length).toEqual(2);
+        expect(receipt.totalCost).toEqual(22.00);
+        expect(receipt.totalSaving).toEqual(3.00);
+        expect(receipt.date).toEqual(new Date());
     });
 
 });

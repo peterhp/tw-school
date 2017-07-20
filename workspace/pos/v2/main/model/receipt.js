@@ -51,3 +51,24 @@ function calcTotalSaving(itemReceipts) {
     }
     return saving;
 }
+
+class Receipt {
+
+    constructor(itemReceipts = [], totalCost = 0.00, totalSaving = 0.00) {
+        this.items = itemReceipts;
+        this.totalCost = totalCost;
+        this.totalSaving = totalSaving;
+        this.date = new Date();
+    }
+
+}
+
+function genReceipt(cart) {
+    let itemReceipts = [];
+    for (let cartItem of cart.items) {
+        itemReceipts.push(calcItemReceipt(cartItem));
+    }
+
+    return new Receipt(itemReceipts,
+        calcTotalCost(itemReceipts), calcTotalSaving(itemReceipts));
+}

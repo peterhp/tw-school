@@ -19,4 +19,18 @@ class Item {
       new Item('ITEM000005', '方便面', '袋', 4.50)
     ];
   }
+
+  static getCommodity(barcode) {
+    const commodites = Item.all();
+
+    let matched = null;
+    for (let commodity of commodites) {
+      if (commodity.barcode === barcode) {
+        matched = commodity;
+        break;
+      }
+    }
+
+    return matched;
+  }
 }

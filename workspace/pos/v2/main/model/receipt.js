@@ -35,3 +35,19 @@ function calcItemReceipt(cartItem) {
     return new ReceiptItem(cartItem,
         calcItemCost(cartItem), calcItemSaving(cartItem));
 }
+
+function calcTotalCost(itemReceipts) {
+    let cost = 0.00;
+    for (let itemReceipt of itemReceipts) {
+        cost += itemReceipt.cost;
+    }
+    return cost;
+}
+
+function calcTotalSaving(itemReceipts) {
+    let saving = 0.00;
+    for (let itemReceipt of itemReceipts) {
+        saving += itemReceipt.saving;
+    }
+    return saving;
+}

@@ -21,4 +21,12 @@ describe("Generate receipt for cart.", () => {
             new ReceiptItem(normItem, 10.00, 0.00));
     });
 
+    it("Should calculate total cost and saving based on item receipts.", () => {
+        const itemReceipts = [new ReceiptItem(promItem, 12.00, 3.00),
+            new ReceiptItem(normItem, 10.00, 0.00)];
+
+        expect(calcTotalCost(itemReceipts)).toEqual(22.00);
+        expect(calcTotalSaving(itemReceipts)).toEqual(3.00);
+    });
+
 });

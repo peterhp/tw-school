@@ -4,7 +4,17 @@ import {Person, Class, Student, Teacher} from "../../main/practice_8";
 
 describe("OO入门", function(){
     it("对象之间的交互-2", function(){
+        const tom = new Teacher("Tom", 21, new Class(2));
 
+        let jerry = new Student("Jerry", 18, new Class(1));
+        expect(tom.introduceWith(jerry)).toEqual(
+            "My name is Tom. I am 21 years old. " +
+            "I am a Teacher. I don't teach Jerry.");
+
+        jerry = new Student("Jerry", 18, new Class(2));
+        expect(tom.introduceWith(jerry)).toEqual(
+            "My name is Tom. I am 21 years old. " +
+            "I am a Teacher. I teach Jerry.");
     });
 
     it("Case 1: test Person class.", function () {

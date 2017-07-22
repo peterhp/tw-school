@@ -1,12 +1,16 @@
 
 class Person {
     constructor(name, age) {
-        this.name = name;
-        this.age = age;
+        this._name = name;
+        this._age = age;
+    }
+
+    get name() {
+        return this._name;
     }
 
     introduce() {
-        return `My name is ${this.name}. I am ${this.age} years old.`;
+        return `My name is ${this._name}. I am ${this._age} years old.`;
     }
 }
 
@@ -23,27 +27,39 @@ class Class {
 class Student extends Person {
     constructor(name, age, _class) {
         super(name, age);
-        this.class = _class;
+        this._class = _class;
     }
 
     introduce() {
         return `${super.introduce()} ` +
-            `I am a Student. I am at Class ${this.class.number}.`;
+            `I am a Student. I am at Class ${this._class.number}.`;
+    }
+
+    get class() {
+        return this._class;
     }
 }
 
 class Teacher extends Person {
     constructor(name, age, _class = null) {
         super(name, age);
-        this.class = _class;
+        this._class = _class;
     }
 
     introduce() {
         let classString = `No Class`;
-        if (this.class) {
-            classString = `Class ${this.class.number}`;
+        if (this._class) {
+            classString = `Class ${this._class.number}`;
         }
         return `${super.introduce()} I am a Teacher. I teach ${classString}.`;
+    }
+
+    introduceWith(stu) {
+        let teachString = "";
+        if (this._class.number != stu.class.number) {
+            teachString = "don't "
+        }
+        return `${super.introduce()} I am a Teacher. I ${teachString}teach ${stu.name}.`;
     }
 }
 

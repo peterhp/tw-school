@@ -51,8 +51,26 @@ class Student extends Person {
     }
 }
 
+class Teacher extends Person {
+    constructor(_id, _name, _age, _class = null) {
+        super(_id, _name, _age);
+        this._class = _class;
+    }
+
+    introduce() {
+        let self = `${super.introduce()} I am a Teacher. `;
+        if (this._class) {
+            self += `I teach Class ${this._class.number}.`;
+        } else {
+            self += `I teach No Class.`;
+        }
+        return self;
+    }
+}
+
 module.exports = {
     Person,
     Class,
-    Student
+    Student,
+    Teacher
 };

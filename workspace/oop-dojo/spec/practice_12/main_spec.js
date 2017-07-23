@@ -4,7 +4,19 @@ import {Person, Class, Student, Teacher} from "../../main/practice_12";
 
 describe("OO入门", function(){
     it("对象之间的交互-6", function(){
+        const class2 = new Class(2);
+        const class3 = new Class(3);
 
+        const tom = new Teacher("001", "Tom", 21, [class2, class3]);
+
+        spyOn(console, "log");
+        const jerry = new Student("002", "Jerry", 19, class2);
+        expect(console.log).toHaveBeenCalledWith(
+            "I am Tom. I know Jerry has joined Class 2.");
+
+        class2.assignLeader(jerry);
+        expect(console.log).toHaveBeenCalledWith(
+            "I am Tom. I know Jerry become Leader of Class 2.");
     });
 
     it("Case 1: Person class.", () => {

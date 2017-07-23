@@ -6,6 +6,10 @@ class Person {
         this._age = _age;
     }
 
+    get name() {
+        return this._name;
+    }
+
     introduce() {
         return `My name is ${this._name}. I am ${this._age} years old.`;
     }
@@ -20,10 +24,15 @@ class Class {
         this._number = _number;
         this._leader = null;
         this._students = [];
+        this._teacher = null;
     }
 
     get number() {
         return this._number;
+    }
+
+    set teacher(_teacher) {
+        this._teacher = _teacher;
     }
 
     isIn(stu) {
@@ -35,16 +44,32 @@ class Class {
         return false;
     }
 
+    _notifyStudentJoined(stu) {
+        if (this._teacher) {
+            this._teacher.printStudentJoined(stu, this);
+        }
+    }
+
+    _notifyStudentBeLeader(stu) {
+        if (this._teacher) {
+            this._teacher.printStudentBeLeader(stu, this);
+        }
+    }
+
     appendMember(stu) {
         if (!this.isIn(stu)) {
             this._students.push(stu);
             stu.class = this;
+
+            this._notifyStudentJoined(stu);
         }
     }
 
     assignLeader(stu) {
         if (this.isIn(stu)) {
             this._leader = stu;
+
+            this._notifyStudentBeLeader(stu);
         } else {
             console.log("It is not one of us.");
         }
@@ -80,6 +105,10 @@ class Teacher extends Person {
     constructor(_id, _name, _age, _classes = []) {
         super(_id, _name, _age);
         this._classes = _classes;
+
+        for (let _class of this._classes) {
+            _class.teacher = this;
+        }
     }
 
     introduce() {
@@ -103,6 +132,16 @@ class Teacher extends Person {
             }
         }
         return false;
+    }
+
+    printStudentJoined(stu, cls) {
+        console.log(`I am ${this._name}. ` +
+            `I know ${stu.name} has joined Class ${cls.number}.`);
+    }
+
+    printStudentBeLeader(stu, cls) {
+        console.log(`I am ${this._name}. ` +
+            `I know ${stu.name} become Leader of Class ${cls.number}.`);
     }
 }
 

@@ -76,8 +76,39 @@ class Student extends Person {
     }
 }
 
+class Teacher extends Person {
+    constructor(_id, _name, _age, _classes = []) {
+        super(_id, _name, _age);
+        this._classes = _classes;
+    }
+
+    introduce() {
+        let self = `${super.introduce()} I am a Teacher. `;
+        if (this._classes.length > 0) {
+            self += `I teach Class ${this._classes[0].number}`;
+            for (let i = 1; i < this._classes.length; ++i) {
+                self += `, ${this._classes[i].number}`;
+            }
+            self += `.`;
+        } else {
+            self += `I teach No Class.`;
+        }
+        return self;
+    }
+
+    isTeaching(stu) {
+        for (let tclass of this._classes) {
+            if (tclass.isIn(stu)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
 module.exports = {
     Person,
     Class,
-    Student
+    Student,
+    Teacher
 };

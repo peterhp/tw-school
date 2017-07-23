@@ -26,7 +26,7 @@ class Class {
         return this._number;
     }
 
-    hasMember(stu) {
+    isIn(stu) {
         for (let mem of this._students) {
             if (mem.isSameTo(stu)) {
                 return true;
@@ -36,14 +36,14 @@ class Class {
     }
 
     appendMember(stu) {
-        if (!this.hasMember(stu)) {
+        if (!this.isIn(stu)) {
             this._students.push(stu);
             stu.class = this;
         }
     }
 
     assignLeader(stu) {
-        if (this.hasMember(stu)) {
+        if (this.isIn(stu)) {
             this._leader = stu;
         } else {
             console.log("It is not one of us.");
@@ -76,8 +76,39 @@ class Student extends Person {
     }
 }
 
+class Teacher extends Person {
+    constructor(_id, _name, _age, _classes = []) {
+        super(_id, _name, _age);
+        this._classes = _classes;
+    }
+
+    introduce() {
+        let self = `${super.introduce()} I am a Teacher. `;
+        if (this._classes.length > 0) {
+            self += `I teach Class ${this._classes[0].number}`;
+            for (let i = 1; i < this._classes.length; ++i) {
+                self += `, ${this._classes[i].number}`;
+            }
+            self += `.`;
+        } else {
+            self += `I teach No Class.`;
+        }
+        return self;
+    }
+
+    isTeaching(stu) {
+        for (let _class of this._classes) {
+            if (_class.isIn(stu)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
 module.exports = {
     Person,
     Class,
-    Student
+    Student,
+    Teacher
 };

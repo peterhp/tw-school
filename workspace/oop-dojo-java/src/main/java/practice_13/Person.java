@@ -18,4 +18,8 @@ public class Person {
         return String.format("My name is %s. I am %d years old.",
                 this.name, this.age);
     }
+
+    public String getId() {
+        return this.id;
+    }
 }

@@ -1,7 +1,11 @@
 package practice_13;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -17,6 +21,8 @@ public class TestIntroduce {
 
     private Teacher tom = new Teacher("001", "Tom", 21);
 
+    private final ByteArrayOutputStream consoleLog = new ByteArrayOutputStream();
+
     @Before
     public void setUp() throws Exception {
         KlassManager.getManager().createKlass(1);
@@ -29,6 +35,13 @@ public class TestIntroduce {
 
         KlassManager.getManager().getKlass(2).appendTeacher(tom);
         KlassManager.getManager().getKlass(3).appendTeacher(tom);
+
+        System.setOut(new PrintStream(consoleLog));
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        System.setOut(null);
     }
 
     @Test
@@ -45,7 +58,9 @@ public class TestIntroduce {
 
     @Test
     public void should_introduce_for_class_leader() throws Exception {
+        consoleLog.reset();
         KlassManager.getManager().getKlass(2).assignLeader(jane);
+        assertThat(consoleLog.toString(), is("It is not one of us."));
         assertThat(jane.introduce(), is("My name is Jane. I am 19 years old. " +
                 "I am a Student. I am at Class 1."));
 
@@ -63,4 +78,21 @@ public class TestIntroduce {
                 is("My name is Kitty. I am 20 years old. " +
                         "I am a Teacher. I teach No Class."));
     }
+
+    @Test
+    public void should_notify_teacher_for_class_news() throws Exception {
+        Student jerry = new Student("203", "Jerry", 18);
+
+        consoleLog.reset();
+        KlassManager.getManager().getKlass(2).appendMember(jerry);
+        assertThat(consoleLog.toString(), is("I am Tom. " +
+                "I know Jerry has joined Class 2."));
+
+        consoleLog.reset();
+        KlassManager.getManager().getKlass(2).assignLeader(jerry);
+        assertThat(consoleLog.toString(), is("I am Tom. " +
+                "I know Jerry become Leader of Class 2."));
+    }
+
+
 }

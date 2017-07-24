@@ -5,7 +5,7 @@ package practice_13;
  */
 public class Person {
     private final String id;
-    private final String name;
+    protected final String name;
     private final int age;
 
     public Person(String id, String name, int age) {
@@ -16,6 +16,10 @@ public class Person {
 
     public String getId() {
         return this.id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String introduce() {

@@ -1,6 +1,8 @@
 package practice_13;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,6 +24,8 @@ public class Klass {
     public void appendMember(Student student) {
         if (!this.isIn(student)) {
             students.put(student.getId(), student);
+
+            this.notifyStudentJoinedEvent(student);
         }
     }
 
@@ -34,6 +38,8 @@ public class Klass {
     public void assignLeader(Student student) {
         if (this.isIn(student)) {
             this.leader = student;
+
+            this.notifyStudentBeLeaderEvent(student);
         } else {
             System.out.print("It is not one of us.");
         }
@@ -48,10 +54,30 @@ public class Klass {
     public void appendTeacher(Teacher teacher) {
         if (!this.isTeacher(teacher)) {
             this.teachers.put(teacher.getId(), teacher);
+
+            this.addListener(teacher);
         }
     }
 
     public boolean isTeacher(Teacher teacher) {
         return this.teachers.containsKey(teacher.getId());
+    }
+
+    private List<NewsListener> listeners = new LinkedList<>();
+
+    public void addListener(NewsListener listener) {
+        this.listeners.add(listener);
+    }
+
+    private void notifyStudentJoinedEvent(Student student) {
+        for (NewsListener listener : this.listeners) {
+            listener.replyStudentJoinedClass(student, this);
+        }
+    }
+
+    private void notifyStudentBeLeaderEvent(Student student) {
+        for (NewsListener listener : this.listeners) {
+            listener.replyStudentBeLeader(student, this);
+        }
     }
 }

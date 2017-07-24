@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Shli on 24/07/2017.
  */
-public class Teacher extends Person {
+public class Teacher extends Person implements NewsListener {
     public Teacher(String id, String name, int age) {
         super(id, name, age);
     }
@@ -26,5 +26,17 @@ public class Teacher extends Person {
         }
 
         return self;
+    }
+
+    @Override
+    public void replyStudentJoinedClass(Student student, Klass klass) {
+        System.out.print(String.format("I am %s. I know %s has joined Class %d.",
+                this.name, student.getName(), klass.getNumber()));
+    }
+
+    @Override
+    public void replyStudentBeLeader(Student student, Klass klass) {
+        System.out.print(String.format("I am %s. I know %s become Leader of Class %d.",
+                this.name, student.getName(), klass.getNumber()));
     }
 }

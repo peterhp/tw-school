@@ -28,4 +28,16 @@ public class Teacher extends Person {
 
         return self;
     }
+
+    public String introduceWith(Student student) {
+        String intro = super.introduce() + " I am a Teacher. ";
+
+        if (this.klass.isSameTo(student.getKlass())) {
+            intro += String.format("I teach %s.", student.getName());
+        } else {
+            intro += String.format("I don't teach %s.", student.getName());
+        }
+
+        return intro;
+    }
 }

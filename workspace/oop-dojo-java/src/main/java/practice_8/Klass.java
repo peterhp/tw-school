@@ -13,4 +13,8 @@ public class Klass {
     public int getNumber() {
         return this.number;
     }
+
+    public boolean isSameTo(Klass klass) {
+        return (this.number == klass.number);
+    }
 }

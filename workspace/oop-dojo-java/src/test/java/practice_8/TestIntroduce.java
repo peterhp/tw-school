@@ -17,8 +17,7 @@ public class TestIntroduce {
 
     @Test
     public void should_introduce_student() throws Exception {
-        Klass class2 = new Klass(2);
-        Student tom = new Student("Tom", 21, class2);
+        Student tom = new Student("Tom", 21, new Klass(2));
         assertThat(tom.introduce(), is("My name is Tom. I am 21 years old. " +
                 "I am a Student. I am at Class 2."));
     }
@@ -33,5 +32,16 @@ public class TestIntroduce {
         assertThat(tom.introduce(), is("My name is Tom. I am 21 years old. " +
                 "I am a Teacher. I teach Class 2."));
 
+    }
+
+    @Test
+    public void should_introduce_student_by_teacher() throws Exception {
+        Teacher tom = new Teacher("Tom", 21, new Klass(2));
+
+        assertThat(tom.introduceWith(new Student("Jerry", 18, new Klass(2))),
+                is("My name is Tom. I am 21 years old. I am a Teacher. I teach Jerry."));
+
+        assertThat(tom.introduceWith(new Student("Jerry", 18, new Klass(1))),
+                is("My name is Tom. I am 21 years old. I am a Teacher. I don't teach Jerry."));
     }
 }

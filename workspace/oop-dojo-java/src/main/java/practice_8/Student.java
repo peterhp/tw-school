@@ -15,4 +15,8 @@ public class Student extends Person {
         return String.format("%s I am a Student. I am at Class %d.",
                 super.introduce(), this.klass.getNumber());
     }
+
+    public Klass getKlass() {
+        return this.klass;
+    }
 }

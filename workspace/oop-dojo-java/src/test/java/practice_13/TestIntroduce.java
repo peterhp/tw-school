@@ -81,6 +81,8 @@ public class TestIntroduce {
 
     @Test
     public void should_notify_teacher_for_class_news() throws Exception {
+        KlassManager.getManager().getKlass(2).addListener(tom);
+
         Student jerry = new Student("203", "Jerry", 18);
 
         consoleLog.reset();
@@ -94,5 +96,22 @@ public class TestIntroduce {
                 "I know Jerry become Leader of Class 2."));
     }
 
+    @Test
+    public void should_notify_teacher_and_computer_for_class_news() throws Exception {
+        Computer computer = new Computer("Puter");
+        KlassManager.getManager().getKlass(1).addListener(computer);
 
+        Student tony = new Student("204", "Tony", 18);
+
+        consoleLog.reset();
+        KlassManager.getManager().getKlass(1).appendMember(tony);
+        assertThat(consoleLog.toString(), is(
+                "I am the Machine. I know Tony has joined Class 1."));
+
+
+        consoleLog.reset();
+        KlassManager.getManager().getKlass(1).assignLeader(tony);
+        assertThat(consoleLog.toString(), is(
+                "I am the Machine. I know Tony become Leader of Class 1."));
+    }
 }

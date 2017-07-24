@@ -54,8 +54,6 @@ public class Klass {
     public void appendTeacher(Teacher teacher) {
         if (!this.isTeacher(teacher)) {
             this.teachers.put(teacher.getId(), teacher);
-
-            this.addListener(teacher);
         }
     }
 

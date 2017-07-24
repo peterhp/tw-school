@@ -13,6 +13,10 @@ public class Klass {
         this.number = number;
     }
 
+    public int getNumber() {
+        return this.number;
+    }
+
     private Map<String, Student> students = new HashMap<>();
 
     public void appendMember(Student student) {
@@ -23,10 +27,6 @@ public class Klass {
 
     public boolean isIn(Student student) {
         return this.students.containsKey(student.getId());
-    }
-
-    public int getNumber() {
-        return this.number;
     }
 
     private Student leader = null;
@@ -41,5 +41,17 @@ public class Klass {
 
     public boolean isLeader(Student student) {
         return (this.leader != null && this.leader.isSameTo(student));
+    }
+
+    private Map<String, Teacher> teachers = new HashMap<>();
+
+    public void appendTeacher(Teacher teacher) {
+        if (!this.isTeacher(teacher)) {
+            this.teachers.put(teacher.getId(), teacher);
+        }
+    }
+
+    public boolean isTeacher(Teacher teacher) {
+        return this.teachers.containsKey(teacher.getId());
     }
 }

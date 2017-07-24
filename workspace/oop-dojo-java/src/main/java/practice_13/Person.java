@@ -14,13 +14,13 @@ public class Person {
         this.age = age;
     }
 
+    public String getId() {
+        return this.id;
+    }
+
     public String introduce() {
         return String.format("My name is %s. I am %d years old.",
                 this.name, this.age);
-    }
-
-    public String getId() {
-        return this.id;
     }
 
     public boolean isSameTo(Person person) {

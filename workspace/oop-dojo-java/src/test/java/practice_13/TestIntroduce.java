@@ -15,14 +15,20 @@ public class TestIntroduce {
     private Student peter = new Student("201", "Peter", 18);
     private Student jim = new Student("202", "Jim", 19);
 
+    private Teacher tom = new Teacher("001", "Tom", 21);
+
     @Before
     public void setUp() throws Exception {
         KlassManager.getManager().createKlass(1);
         KlassManager.getManager().createKlass(2);
+        KlassManager.getManager().createKlass(3);
 
         KlassManager.getManager().getKlass(1).appendMember(jane);
         KlassManager.getManager().getKlass(2).appendMember(peter);
         KlassManager.getManager().getKlass(2).appendMember(jim);
+
+        KlassManager.getManager().getKlass(2).appendTeacher(tom);
+        KlassManager.getManager().getKlass(3).appendTeacher(tom);
     }
 
     @Test
@@ -46,5 +52,15 @@ public class TestIntroduce {
         KlassManager.getManager().getKlass(2).assignLeader(jim);
         assertThat(jim.introduce(), is("My name is Jim. I am 19 years old. " +
                 "I am a Student. I am Leader of Class 2."));
+    }
+
+    @Test
+    public void should_introduce_teacher() throws Exception {
+        assertThat(tom.introduce(), is("My name is Tom. I am 21 years old. " +
+                "I am a Teacher. I teach Class 2, 3."));
+
+        assertThat(new Teacher("003", "Kitty", 20).introduce(),
+                is("My name is Kitty. I am 20 years old. " +
+                        "I am a Teacher. I teach No Class."));
     }
 }

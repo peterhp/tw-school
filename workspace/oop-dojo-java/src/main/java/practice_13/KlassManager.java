@@ -1,6 +1,8 @@
 package practice_13;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,6 +27,13 @@ public class KlassManager {
         }
     }
 
+    public Klass getKlass(int number) {
+        if (this.klasses.containsKey(number)) {
+            return this.klasses.get(number);
+        }
+        return null;
+    }
+
     public Klass getStudentKlass(Student student) {
         for (Klass klass : this.klasses.values()) {
             if (klass.isIn(student)) {
@@ -34,10 +43,13 @@ public class KlassManager {
         return null;
     }
 
-    public Klass getKlass(int number) {
-        if (this.klasses.containsKey(number)) {
-            return this.klasses.get(number);
+    public List<Klass> getTeachKlasses(Teacher teacher) {
+        List<Klass> tklasses = new LinkedList<>();
+        for (Klass klass : this.klasses.values()) {
+            if (klass.isTeacher(teacher)) {
+                tklasses.add(klass);
+            }
         }
-        return null;
+        return tklasses;
     }
 }

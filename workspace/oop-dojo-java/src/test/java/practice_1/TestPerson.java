@@ -10,10 +10,16 @@ import static org.junit.Assert.assertThat;
  */
 public class TestPerson {
 
-    private Person tom = new Person("Tom", 21);
-
     @Test
     public void should_introduce_itself() throws Exception {
+        Person tom = new Person("Tom", 21);
         assertThat(tom.introduce(), is("My name is Tom. I am 21 years old."));
+    }
+
+    @Test
+    public void should_exchange_name_directly() throws Exception {
+        Person tom = new Person("Tom", 21);
+        tom.name = "Tom Wu";
+        assertThat(tom.toString(), is("My name is Tom Wu. I am 21 years old."));
     }
 }

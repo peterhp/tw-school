@@ -16,4 +16,9 @@ public class Person {
         return String.format("My name is %s. I am %d years old.",
                 this.name, this.age);
     }
+
+    @Override
+    public String toString() {
+        return this.introduce();
+    }
 }

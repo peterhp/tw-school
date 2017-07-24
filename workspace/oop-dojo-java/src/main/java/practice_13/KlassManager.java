@@ -19,11 +19,10 @@ public class KlassManager {
 
     private Map<Integer, Klass> klasses = new HashMap<>();
 
-    public Klass createKlass(int number) {
-        if (!klasses.containsKey(number)) {
-            klasses.put(number, new Klass(number));
+    public void createKlass(int number) {
+        if (!this.klasses.containsKey(number)) {
+            this.klasses.put(number, new Klass(number));
         }
-        return klasses.get(number);
     }
 
     public Klass getStudentKlass(Student student) {
@@ -31,6 +30,13 @@ public class KlassManager {
             if (klass.isIn(student)) {
                 return klass;
             }
+        }
+        return null;
+    }
+
+    public Klass getKlass(int number) {
+        if (this.klasses.containsKey(number)) {
+            return this.klasses.get(number);
         }
         return null;
     }

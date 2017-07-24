@@ -16,7 +16,7 @@ public class Klass {
     private Map<String, Student> students = new HashMap<>();
 
     public void appendMember(Student student) {
-        if (!students.containsKey(student.getId())) {
+        if (!this.isIn(student)) {
             students.put(student.getId(), student);
         }
     }
@@ -27,5 +27,19 @@ public class Klass {
 
     public int getNumber() {
         return this.number;
+    }
+
+    private Student leader = null;
+
+    public void assignLeader(Student student) {
+        if (this.isIn(student)) {
+            this.leader = student;
+        } else {
+            System.out.print("It is not one of us.");
+        }
+    }
+
+    public boolean isLeader(Student student) {
+        return (this.leader != null && this.leader.isSameTo(student));
     }
 }

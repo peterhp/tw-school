@@ -22,4 +22,8 @@ public class Person {
     public String getId() {
         return this.id;
     }
+
+    public boolean isSameTo(Person person) {
+        return this.id.equals(person.id);
+    }
 }

@@ -10,7 +10,15 @@ public class Student extends Person {
 
     @Override
     public String introduce() {
-        return String.format("%s I am a Student. I am at Class %d.", super.introduce(),
-                KlassManager.getManager().getStudentKlass(this).getNumber());
+        String self = String.format("%s I am a Student. ", super.introduce());
+
+        Klass klass = KlassManager.getManager().getStudentKlass(this);
+        if (klass.isLeader(this)) {
+            self += String.format("I am Leader of Class %d.", klass.getNumber());
+        } else {
+            self += String.format("I am at Class %d.", klass.getNumber());
+        }
+
+        return self;
     }
 }

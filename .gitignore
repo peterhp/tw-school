@@ -128,5 +128,8 @@ $RECYCLE.BIN/
 
 ### Custom ###
 workspace/git-command
+workspace/gradle-demo
+
+*/.gradle
 
 # End of https://www.gitignore.io/api/windows,linux,macos,node

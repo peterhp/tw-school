@@ -16,9 +16,16 @@ public class TestIntroduce {
     }
 
     @Test
-    public void shuold_introduce_student() throws Exception {
+    public void should_introduce_student() throws Exception {
         Student tom = new Student("Tom", 21, 2);
         assertThat(tom.introduce(), is("My name is Tom. I am 21 years old. " +
                 "I am a Student. I am at Class 2."));
+    }
+
+    @Test
+    public void should_introduce_teacher_teaching_no_class() throws Exception {
+        Teacher tom = new Teacher("Tom", 21);
+        assertThat(tom.introduce(), is("My name is Tom. I am 21 years old. " +
+                "I am a Teacher. I teach No Class."));
     }
 }

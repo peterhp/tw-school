@@ -27,4 +27,15 @@ public class TestIntroduce {
         assertThat(stu.introduce(), is("My name is Tom. I am 21 years old. " +
                 "I am a Student. I am Leader of Class 2."));
     }
+
+    @Test
+    public void should_introduce_teacher() throws Exception {
+        Teacher teacher1 = new Teacher("T001", "Tom", 21, new Klass(2));
+        assertThat(teacher1.introduce(), is("My name is Tom. I am 21 years old. " +
+                "I am a Teacher. I teach Class 2."));
+
+        Teacher teacher2 = new Teacher("T002", "Tom", 21);
+        assertThat(teacher2.introduce(), is("My name is Tom. I am 21 years old. " +
+                "I am a Teacher. I teach No Class."));
+    }
 }

@@ -1,5 +1,3 @@
-import java.util.List;
-
 /**
  * Created by Shli on 25/07/2017.
  */
@@ -22,5 +20,10 @@ public class WordFrequency {
 
     public void addFrequency(int count) {
         this.frequency += count;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %d", this.word, this.frequency);
     }
 }

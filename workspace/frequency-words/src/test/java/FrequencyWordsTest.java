@@ -4,9 +4,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 /**
  * Created by Shli on 25/07/2017.
@@ -55,5 +53,18 @@ public class FrequencyWordsTest {
         assertEquals(3, wordFreqList.get(0).getFrequency());
         assertEquals("day", wordFreqList.get(2).getWord());
         assertEquals(1, wordFreqList.get(2).getFrequency());
+    }
+
+    @Test
+    public void should_print_word_frequency_list() throws Exception {
+        // given
+        List<WordFrequency> wordFreqList = Arrays.asList(new WordFrequency("the", 3),
+                new WordFrequency("day", 2), new WordFrequency("is", 1));
+
+        // when
+        String printMsg = new StatisticUtil().getWordFrequencyListInfo(wordFreqList);
+
+        // then
+        assertEquals("the 3\nday 2\nis 1", printMsg);
     }
 }

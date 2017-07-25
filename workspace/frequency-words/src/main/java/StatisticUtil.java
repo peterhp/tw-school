@@ -43,4 +43,13 @@ public class StatisticUtil {
         });
         Collections.reverse(wordFreqList);
     }
+
+    public String getWordFrequencyListInfo(List<WordFrequency> wordFreqList) {
+        String info = "";
+        for (WordFrequency freq : wordFreqList) {
+            info += freq.toString() + "\n";
+        }
+
+        return (info.isEmpty() ? "" : info.substring(0, info.length() - 1));
+    }
 }

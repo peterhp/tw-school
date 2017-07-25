@@ -18,4 +18,8 @@ public class Person {
         return String.format("My name is %s. I am %d years old.",
                 this.name, this.age);
     }
+
+    public boolean isSameTo(Person person) {
+        return this.id.equals(person.id);
+    }
 }

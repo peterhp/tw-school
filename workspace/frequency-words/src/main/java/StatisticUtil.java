@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,5 +32,15 @@ public class StatisticUtil {
             }
         }
         return matched;
+    }
+
+    public void sortWordFrequencyList(List<WordFrequency> wordFreqList) {
+        Collections.sort(wordFreqList, new Comparator<WordFrequency>() {
+            @Override
+            public int compare(WordFrequency freq1, WordFrequency freq2) {
+                return freq1.getFrequency() - freq2.getFrequency();
+            }
+        });
+        Collections.reverse(wordFreqList);
     }
 }

@@ -40,4 +40,20 @@ public class FrequencyWordsTest {
         assertEquals("the", wordFreqList.get(0).getWord());
         assertEquals(3, wordFreqList.get(0).getFrequency());
     }
+
+    @Test
+    public void should_sort_word_frequency_list_with_frequency_in_descend_order() throws Exception {
+        // given
+        List<WordFrequency> wordFreqList = Arrays.asList(new WordFrequency("is", 2),
+                new WordFrequency("day", 1), new WordFrequency("the", 3));
+
+        // when
+        new StatisticUtil().sortWordFrequencyList(wordFreqList);
+
+        // then
+        assertEquals("the", wordFreqList.get(0).getWord());
+        assertEquals(3, wordFreqList.get(0).getFrequency());
+        assertEquals("day", wordFreqList.get(2).getWord());
+        assertEquals(1, wordFreqList.get(2).getFrequency());
+    }
 }

@@ -29,4 +29,20 @@ public class Student {
     public String getName() {
         return name;
     }
+
+    public int getMath() {
+        return math;
+    }
+
+    public int getChinese() {
+        return chinese;
+    }
+
+    public int getEnglish() {
+        return english;
+    }
+
+    public int getProgram() {
+        return program;
+    }
 }

@@ -14,11 +14,19 @@ public class Parser {
 
 
     public static Student parseStudent(String stuInfo) throws InvalidStudentFormatException {
-        Matcher matcher = pStu.matcher(stuInfo);
-
-        if (!matcher.matches()) {
+        if (!validateStudentFormat(stuInfo)) {
             throw new InvalidStudentFormatException();
         }
+
+        return obtainStudent(stuInfo);
+    }
+
+    private static boolean validateStudentFormat(String stuInfo) {
+        return pStu.matcher(stuInfo).matches();
+    }
+
+    private static Student obtainStudent(String stuInfo) {
+        Matcher matcher = pStu.matcher(stuInfo);
 
         return new Student(matcher.group(2), matcher.group(1),
                 Integer.parseInt(matcher.group(3)), Integer.parseInt(matcher.group(4)),

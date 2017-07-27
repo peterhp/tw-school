@@ -66,7 +66,11 @@ public class Parser {
         List<Student> students = new ArrayList<>();
 
         for (String id : ids) {
-            if (klass.find(id) == null) {
+            Student student = klass.find(id);
+
+            if (student != null) {
+                students.add(student);
+            } else {
                 throw new StudentNotExistInClassException();
             }
         }

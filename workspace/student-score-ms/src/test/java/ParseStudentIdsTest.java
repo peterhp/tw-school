@@ -4,6 +4,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -41,5 +45,24 @@ public class ParseStudentIdsTest {
 
         // when
         Parser.parseStudentList(idsString, klass);
+    }
+
+    @Test
+    public void should_return_student_list_after_parse_ids_txt() throws Exception {
+        // given
+        String idsString = "S003，S004";
+        Klass klass = mock(Klass.class);
+        when(klass.find("S003")).thenReturn(
+                new Student("S003", "张三", 75, 95, 80, 80));
+        when(klass.find("S004")).thenReturn(
+                new Student("S004", "李四", 85, 80, 70, 90));
+
+        // when
+        List<Student> students = Parser.parseStudentList(idsString, klass);
+
+        // then
+        assertThat(students.size(), is(2));
+        assertThat(students.get(0).getId(), is("S003"));
+        assertThat(students.get(1).getId(), is("S004"));
     }
 }

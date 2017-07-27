@@ -3,6 +3,8 @@ import data.ReportItem;
 import data.Student;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -29,10 +31,24 @@ public class ReportManagerTest {
         Student student = new Student("S003", "张三", 75, 95, 80, 80);
 
         // when
-        Report report = new Report(student);
+        Report report = new Report(Arrays.asList(student));
 
         // then
         assertThat(report.getAverageTotalScore(), is(330));
         assertThat(report.getMedianTotalScore(), is(330));
+    }
+
+    @Test
+    public void should_generate_report_for_two_students() throws Exception {
+        // given
+        Student stu1 = new Student("S003", "张三", 75, 95, 80, 80);
+        Student stu2 = new Student("S004", "李四", 85, 80, 70, 90);
+
+        // when
+        Report report = new Report(Arrays.asList(stu1, stu2));
+
+        // then
+        assertThat(report.getAverageTotalScore(), is(327.5));
+        assertThat(report.getMedianTotalScore(), is(327.5));
     }
 }

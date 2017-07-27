@@ -17,8 +17,10 @@ public class Report {
     private final float averageTotalScore;
     private final float medianTotalScore;
 
-    public Report(Student student) {
-        this.items.add(new ReportItem(student));
+    public Report(List<Student> students) {
+        for (Student student : students) {
+            this.items.add(new ReportItem(student));
+        }
 
         this.averageTotalScore = this.calcAverageTotalScore();
         this.medianTotalScore = this.calcMedianTotalScore();

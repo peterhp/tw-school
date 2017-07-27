@@ -1,6 +1,10 @@
 import exception.InvalidStudentFormatException;
 import exception.InvalidStudentIdListFormatException;
+import exception.StudentNotExistInClassException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,11 +29,15 @@ public class Parser {
         return obtainStudent(stuInfo);
     }
 
-    public static void parseStudentList(String stuIdsInfo, Klass klass)
-            throws InvalidStudentIdListFormatException {
+    public static List<Student> parseStudentList(String stuIdsInfo, Klass klass)
+            throws InvalidStudentIdListFormatException, StudentNotExistInClassException {
         if (!validateStudentIdsFormat(stuIdsInfo)) {
             throw new InvalidStudentIdListFormatException();
         }
+
+        List<String> ids = obtainStudentIdList(stuIdsInfo);
+
+        return obtainStudentList(ids, klass);
     }
 
     private static boolean validateStudentFormat(String stuInfo) {
@@ -47,5 +55,22 @@ public class Parser {
 
     private static boolean validateStudentIdsFormat(String stuIdsInfo) {
         return pIds.matcher(stuIdsInfo).matches();
+    }
+
+    private static List<String> obtainStudentIdList(String stuIdsInfo) {
+        return Arrays.asList(stuIdsInfo.split("，"));
+    }
+
+    private static List<Student> obtainStudentList(List<String> ids, Klass klass)
+            throws StudentNotExistInClassException {
+        List<Student> students = new ArrayList<>();
+
+        for (String id : ids) {
+            if (klass.find(id) == null) {
+                throw new StudentNotExistInClassException();
+            }
+        }
+
+        return students;
     }
 }

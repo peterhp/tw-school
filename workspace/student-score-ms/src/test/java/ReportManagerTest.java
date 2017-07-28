@@ -21,8 +21,8 @@ public class ReportManagerTest {
         ReportItem item = new ReportItem(student);
 
         // then
-        assertThat(item.getTotalScore(), is(330));
-        assertThat(item.getAverageScore(), is(82.5));
+        assertThat(item.getTotalScore(), is(330f));
+        assertThat(item.getAverageScore(), is(82.5f));
     }
 
     @Test
@@ -34,8 +34,8 @@ public class ReportManagerTest {
         Report report = new Report(Arrays.asList(student));
 
         // then
-        assertThat(report.getAverageTotalScore(), is(330));
-        assertThat(report.getMedianTotalScore(), is(330));
+        assertThat(report.getAverageTotalScore(), is(330f));
+        assertThat(report.getMedianTotalScore(), is(330f));
     }
 
     @Test
@@ -48,7 +48,30 @@ public class ReportManagerTest {
         Report report = new Report(Arrays.asList(stu1, stu2));
 
         // then
-        assertThat(report.getAverageTotalScore(), is(327.5));
-        assertThat(report.getMedianTotalScore(), is(327.5));
+        assertThat(report.getAverageTotalScore(), is(327.5f));
+        assertThat(report.getMedianTotalScore(), is(327.5f));
+    }
+
+    @Test
+    public void should_print_report_to_txt_format() throws Exception {
+        // given
+        Student stu1 = new Student("S003", "张三", 75, 95, 80, 80);
+        Student stu2 = new Student("S004", "李四", 85, 80, 70, 90);
+
+        // when
+        Report report = new Report(Arrays.asList(stu1, stu2));
+
+        // then
+        String expected =
+                "成绩单\n" +
+                "姓名|数学|语文|英语|编程|平均分|总分\n" +
+                "========================\n" +
+                "张三|75|95|80|80|82.5|330\n" +
+                "李四|85|80|70|90|81.25|325\n" +
+                "========================\n" +
+                "全班总平均分：327.5\n" +
+                "全班总分中位数：327.5";
+
+        assertThat(report.toString(), is(expected));
     }
 }

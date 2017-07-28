@@ -7,19 +7,19 @@ public class Student {
     private final String id;
     private final String name;
 
-    private final int math;
-    private final int chinese;
-    private final int english;
-    private final int program;
+    private final int mathScore;
+    private final int chineseScore;
+    private final int englishScore;
+    private final int programScore;
 
-    public Student(String id, String name, int math, int chinese, int english, int program) {
+    public Student(String id, String name, int mathScore, int chinese, int english, int program) {
         this.id = id;
         this.name = name;
 
-        this.math = math;
-        this.chinese = chinese;
-        this.english = english;
-        this.program = program;
+        this.mathScore = mathScore;
+        this.chineseScore = chinese;
+        this.englishScore = english;
+        this.programScore = program;
     }
 
     public String getId() {
@@ -30,19 +30,19 @@ public class Student {
         return name;
     }
 
-    public int getMath() {
-        return math;
+    public int getMathScore() {
+        return mathScore;
     }
 
-    public int getChinese() {
-        return chinese;
+    public int getChineseScore() {
+        return chineseScore;
     }
 
-    public int getEnglish() {
-        return english;
+    public int getEnglishScore() {
+        return englishScore;
     }
 
-    public int getProgram() {
-        return program;
+    public int getProgramScore() {
+        return programScore;
     }
 }

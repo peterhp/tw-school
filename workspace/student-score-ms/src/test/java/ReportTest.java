@@ -2,6 +2,8 @@ import data.Report;
 import data.ReportItem;
 import data.Student;
 import org.junit.Test;
+import util.ReportBuilder;
+import util.ReportFormatter;
 
 import java.util.Arrays;
 
@@ -11,29 +13,21 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by Shli on 27/07/2017.
  */
-public class ReportManagerTest {
-    @Test
-    public void should_generate_report_item_for_student() throws Exception {
-        // given
-        Student student = new Student("S003", "张三", 75, 95, 80, 80);
-
-        // when
-        ReportItem item = new ReportItem(student);
-
-        // then
-        assertThat(item.getTotalScore(), is(330f));
-        assertThat(item.getAverageScore(), is(82.5f));
-    }
-
+public class ReportTest {
     @Test
     public void should_generate_report_for_single_student() throws Exception {
         // given
         Student student = new Student("S003", "张三", 75, 95, 80, 80);
 
         // when
-        Report report = new Report(Arrays.asList(student));
+        Report report = ReportBuilder.generateReport(Arrays.asList(student));
 
         // then
+        assertThat(report.getItems().size(), is(1));
+        assertThat(report.getItems().get(0).getName(), is("张三"));
+        assertThat(report.getItems().get(0).getTotalScore(), is(330f));
+        assertThat(report.getItems().get(0).getAverageScore(), is(82.5f));
+
         assertThat(report.getAverageTotalScore(), is(330f));
         assertThat(report.getMedianTotalScore(), is(330f));
     }
@@ -45,9 +39,17 @@ public class ReportManagerTest {
         Student stu2 = new Student("S004", "李四", 85, 80, 70, 90);
 
         // when
-        Report report = new Report(Arrays.asList(stu1, stu2));
+        Report report = ReportBuilder.generateReport(Arrays.asList(stu1, stu2));
 
         // then
+        assertThat(report.getItems().size(), is(2));
+        assertThat(report.getItems().get(0).getName(), is("张三"));
+        assertThat(report.getItems().get(0).getTotalScore(), is(330f));
+        assertThat(report.getItems().get(0).getAverageScore(), is(82.5f));
+        assertThat(report.getItems().get(1).getName(), is("李四"));
+        assertThat(report.getItems().get(1).getTotalScore(), is(325f));
+        assertThat(report.getItems().get(1).getAverageScore(), is(81.25f));
+
         assertThat(report.getAverageTotalScore(), is(327.5f));
         assertThat(report.getMedianTotalScore(), is(327.5f));
     }
@@ -55,15 +57,15 @@ public class ReportManagerTest {
     @Test
     public void should_print_report_to_txt_format() throws Exception {
         // given
-        Student stu1 = new Student("S003", "张三", 75, 95, 80, 80);
-        Student stu2 = new Student("S004", "李四", 85, 80, 70, 90);
+        ReportItem item1 = new ReportItem(new Student("S003", "张三", 75, 95, 80, 80));
+        ReportItem item2 = new ReportItem(new Student("S004", "李四", 85, 80, 70, 90));
+        Report report = new Report(Arrays.asList(item1, item2));
 
         // when
-        Report report = new Report(Arrays.asList(stu1, stu2));
+        String reportTxt = ReportFormatter.generateReportString(report);
 
         // then
-        String expected =
-                "成绩单\n" +
+        String expected = "成绩单\n" +
                 "姓名|数学|语文|英语|编程|平均分|总分\n" +
                 "========================\n" +
                 "张三|75|95|80|80|82.5|330\n" +
@@ -71,7 +73,6 @@ public class ReportManagerTest {
                 "========================\n" +
                 "全班总平均分：327.5\n" +
                 "全班总分中位数：327.5";
-
-        assertThat(report.toString(), is(expected));
+        assertThat(reportTxt, is(expected));
     }
 }

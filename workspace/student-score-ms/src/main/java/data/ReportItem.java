@@ -4,41 +4,47 @@ package data;
  * Created by Shli on 27/07/2017.
  */
 public class ReportItem {
-    private static final String REPORT_ITEM = "%s|%d|%d|%d|%d|%s|%s";
+    private final String name;
 
-    private final Student student;
-
-    private final float totalScore;
-    private final float averageScore;
+    private final int mathScore;
+    private final int chineseScore;
+    private final int englishScore;
+    private final int programScore;
 
     public ReportItem(Student student) {
-        this.student = student;
+        this.name = student.getName();
 
-        this.totalScore = this.calcTotalScore();
-        this.averageScore = this.calcAverageScore();
+        this.mathScore = student.getMathScore();
+        this.chineseScore = student.getChineseScore();
+        this.englishScore = student.getEnglishScore();
+        this.programScore = student.getProgramScore();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMathScore() {
+        return mathScore;
+    }
+
+    public int getChineseScore() {
+        return chineseScore;
+    }
+
+    public int getEnglishScore() {
+        return englishScore;
+    }
+
+    public int getProgramScore() {
+        return programScore;
     }
 
     public float getTotalScore() {
-        return this.totalScore;
+        return (mathScore + chineseScore + englishScore + programScore);
     }
 
     public float getAverageScore() {
-        return this.averageScore;
-    }
-
-    private float calcTotalScore() {
-        return student.getMath() + student.getChinese() +
-                student.getEnglish() + student.getProgram();
-    }
-
-    private float calcAverageScore() {
-        return calcTotalScore() / 4;
-    }
-
-    @Override
-    public String toString() {
-        return String.format(REPORT_ITEM, student.getName(), student.getMath(),
-                student.getChinese(), student.getEnglish(), student.getProgram(),
-                String.valueOf(averageScore), String.valueOf((int)totalScore));
+        return getTotalScore() / 4;
     }
 }

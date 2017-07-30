@@ -8,6 +8,15 @@ public class App {
 
     public String startup() {
         page = new HomePage();
-        return page.run();
+        return page.display();
+    }
+
+    public String exec(String input) {
+        String msg = page.exec(input);
+
+        page = page.next();
+        msg += page.display();
+
+        return msg;
     }
 }

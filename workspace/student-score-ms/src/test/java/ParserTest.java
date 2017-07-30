@@ -2,6 +2,9 @@ import data.Student;
 import org.junit.Test;
 import util.Parser;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -37,5 +40,17 @@ public class ParserTest {
 
         // then
         assertNull(stu);
+    }
+
+    @Test
+    public void should_return_id_list_when_parse_student_ids_string() throws Exception {
+        // given
+        String stuIds = "S003，S004";
+
+        // when
+        List<String> ids = Parser.parseStudentIds(stuIds);
+
+        // then
+        assertThat(ids, is(Arrays.asList("S003", "S004")));
     }
 }

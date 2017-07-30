@@ -59,4 +59,17 @@ public class AppTest {
         // then
         assertThat(msg, is(AppMsg.SIG_EXIT));
     }
+
+    @Test
+    public void should_return_main_menu_again_when_input_invalid_command_after_app_starts() throws Exception {
+        // given
+        App app = new App();
+        app.startup();
+
+        // when
+        String msg = app.exec("4");
+
+        // then
+        assertThat(msg, is(AppMsg.PROMPT_MAIN_MENU));
+    }
 }

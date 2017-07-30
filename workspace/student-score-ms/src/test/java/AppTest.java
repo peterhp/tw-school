@@ -140,4 +140,27 @@ public class AppTest {
         // then
         assertThat(msg, is(AppMsg.PROMPT_PRINT_REPORT_RETRY));
     }
+
+    @Test
+    public void should_return_retry_message_when_input_student_ids_that_doesnot_exist_in_class() throws Exception {
+        // given
+        App app = new App();
+        app.startup();
+
+        String stu1 = "张三3，S0033，数学：75，语文：95，英语：80，编程：80";
+        String stu2 = "李四4，S0034，数学：75，语文：95，英语：80，编程：80";
+        app.exec("1");
+        app.exec(stu1);
+        app.exec("1");
+        app.exec(stu2);
+
+        String stuIds = "S0033，S0035";
+        app.exec("2");
+
+        // when
+        String msg = app.exec(stuIds);
+
+        // then
+        assertThat(msg, is(AppMsg.PROMPT_PRINT_REPORT_RETRY));
+    }
 }

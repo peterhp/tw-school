@@ -1,5 +1,7 @@
 package app;
 
+import core.StudentService;
+import data.Student;
 import util.Parser;
 
 import java.util.List;
@@ -18,8 +20,13 @@ public class PrintReportPage extends Page {
     @Override
     public String exec(String input) {
         List<String> ids = Parser.parseStudentIds(input);
-
         if (ids.isEmpty()) {
+            retry = true;
+            return super.exec(input);
+        }
+
+        List<Student> students = StudentService.getInstance().findStudents(ids);
+        if (students.isEmpty()) {
             retry = true;
         }
 

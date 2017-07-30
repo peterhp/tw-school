@@ -72,4 +72,20 @@ public class AppTest {
         // then
         assertThat(msg, is(AppMsg.PROMPT_MAIN_MENU));
     }
+
+    @Test
+    public void should_return_retry_message_when_input_student_with_invalid_format() throws Exception {
+        // given
+        App app = new App();
+        app.startup();
+        app.exec("1");
+
+        String stuInfo = "张三，S003，75，95，80，80";
+
+        // when
+        String msg = app.exec(stuInfo);
+
+        // then
+        assertThat(msg, is(AppMsg.PROMPT_ADD_STUDENT_RETRY));
+    }
 }

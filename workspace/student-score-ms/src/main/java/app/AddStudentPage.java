@@ -1,11 +1,26 @@
 package app;
 
+import util.Parser;
+
 /**
  * Created by Shli on 30/07/2017.
  */
 public class AddStudentPage extends Page {
+
+
+    private boolean retry = false;
+
     @Override
     public String display() {
-        return AppMsg.PROMPT_ADD_STUDENT;
+        return (retry ? AppMsg.PROMPT_ADD_STUDENT_RETRY : AppMsg.PROMPT_ADD_STUDENT);
+    }
+
+    @Override
+    public String exec(String input) {
+        if (Parser.parseStudent(input) == null) {
+            this.retry = true;
+        }
+
+        return super.exec(input);
     }
 }

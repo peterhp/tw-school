@@ -3,6 +3,7 @@ import org.junit.Test;
 import util.Parser;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -24,5 +25,17 @@ public class ParserTest {
         assertThat(stu.getChineseScore(), is(95));
         assertThat(stu.getEnglishScore(), is(80));
         assertThat(stu.getProgramScore(), is(80));
+    }
+
+    @Test
+    public void should_return_null_when_parse_student_from_invalid_string_format() throws Exception {
+        // given
+        String stuInfo = "张三，S003，75，95，80，80";
+
+        // when
+        Student stu = Parser.parseStudent(stuInfo);
+
+        // then
+        assertNull(stu);
     }
 }

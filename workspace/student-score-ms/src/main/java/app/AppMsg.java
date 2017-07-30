@@ -18,6 +18,8 @@ public class AppMsg {
 
     public static final String PROMPT_PRINT_REPORT =
             "请输入要打印的学生的学号（格式：学号，学号，...），按回车提交：\n";
+    public static final String PROMPT_PRINT_REPORT_RETRY =
+            "请按正确的格式输入要打印的学生的学号（格式：学号，学号，...），按回车提交：\n";
 
     public static final String SIG_EXIT = "exit";
 }

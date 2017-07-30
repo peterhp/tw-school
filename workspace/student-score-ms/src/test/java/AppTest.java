@@ -124,4 +124,20 @@ public class AppTest {
         // then
         assertThat(msg, is(AppMsg.PROMPT_ADD_STUDENT_RETRY));
     }
+
+    @Test
+    public void should_return_retry_message_when_input_invalid_student_ids() throws Exception {
+        // given
+        App app = new App();
+        app.startup();
+
+        String stuIds = "S003，S0 4";
+        app.exec("2");
+
+        // when
+        String msg = app.exec(stuIds);
+
+        // then
+        assertThat(msg, is(AppMsg.PROMPT_PRINT_REPORT_RETRY));
+    }
 }

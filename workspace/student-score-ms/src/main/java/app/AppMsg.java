@@ -6,6 +6,8 @@ package app;
 public class AppMsg {
     public static final String EMPTY = "";
 
+    public static final String SIG_EXIT = "exit";
+
     public static final String PROMPT_MAIN_MENU =
             "1. 添加学生\n2. 生成成绩单\n3. 退出\n请输入你的选择（1～3）：\n";
     public static final String PROMPT_ADD_STUDENT =

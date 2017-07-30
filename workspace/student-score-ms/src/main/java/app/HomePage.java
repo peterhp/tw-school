@@ -6,6 +6,7 @@ package app;
 public class HomePage extends Page {
     private static final String CMD_ADD_STUDENT = "1";
     private static final String CMD_PRINT_REPORT = "2";
+    private static final String CMD_EXIT_APP = "3";
 
     @Override
     public String display() {
@@ -21,6 +22,10 @@ public class HomePage extends Page {
 
             case CMD_PRINT_REPORT:
                 nextPage = new PrintReportPage();
+                break;
+
+            case CMD_EXIT_APP:
+                nextPage = new ExitPage();
                 break;
         }
 

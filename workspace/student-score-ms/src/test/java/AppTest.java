@@ -46,4 +46,17 @@ public class AppTest {
         // then
         assertThat(msg, is(AppMsg.PROMPT_PRINT_REPORT));
     }
+
+    @Test
+    public void should_return_exit_message_when_input_command_three_after_app_starts() throws Exception {
+        // given
+        App app = new App();
+        app.startup();
+
+        // when
+        String msg = app.exec("3");
+
+        // then
+        assertThat(msg, is(AppMsg.SIG_EXIT));
+    }
 }

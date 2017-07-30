@@ -19,14 +19,12 @@ public class AddStudentPage extends Page {
     public String exec(String input) {
         Student student = Parser.parseStudent(input);
 
-        if (student == null) {
+        if (student != null && StudentService.getInstance().addStudent(student)) {
+            nextPage = new HomePage();
+            return String.format(AppMsg.ALERT_ADD_STUDENT_SUCCESS, student.getName());
+        } else {
             this.retry = true;
             return super.exec(input);
         }
-
-        StudentService.getInstance().addStudent(student);
-        nextPage = new HomePage();
-
-        return String.format(AppMsg.ALERT_ADD_STUDENT_SUCCESS, student.getName());
     }
 }

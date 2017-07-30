@@ -78,9 +78,9 @@ public class AppTest {
         // given
         App app = new App();
         app.startup();
-        app.exec("1");
 
         String stuInfo = "张三，S003，75，95，80，80";
+        app.exec("1");
 
         // when
         String msg = app.exec(stuInfo);
@@ -94,15 +94,34 @@ public class AppTest {
         // given
         App app = new App();
         app.startup();
-        app.exec("1");
 
-        String stuInfo = "张三，S003，数学：75，语文：95，英语：80，编程：80";
+        String stuInfo = "张三1，S0031，数学：75，语文：95，英语：80，编程：80";
+        app.exec("1");
 
         // when
         String msg = app.exec(stuInfo);
 
         // then
-        String expected = String.format(AppMsg.ALERT_ADD_STUDENT_SUCCESS, "张三") + AppMsg.PROMPT_MAIN_MENU;
+        String expected = String.format(AppMsg.ALERT_ADD_STUDENT_SUCCESS, "张三1") + AppMsg.PROMPT_MAIN_MENU;
         assertThat(msg, is(expected));
+    }
+
+    @Test
+    public void should_return_retry_message_when_fail_to_add_existed_student_int_class() throws Exception {
+        // given
+        App app = new App();
+        app.startup();
+
+        String stuInfo = "张三2，S0032，数学：75，语文：95，英语：80，编程：80";
+        app.exec("1");
+        app.exec(stuInfo);
+
+        app.exec("1");
+
+        // when
+        String msg = app.exec(stuInfo);
+
+        // then
+        assertThat(msg, is(AppMsg.PROMPT_ADD_STUDENT_RETRY));
     }
 }

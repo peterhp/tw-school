@@ -15,8 +15,8 @@ public class StudentService {
 
     }
 
-    public void addStudent(Student student) {
-        klass.addStudent(student);
+    public boolean addStudent(Student student) {
+        return klass.addStudent(student);
     }
 
     public static StudentService getInstance() {

@@ -53,4 +53,16 @@ public class ParserTest {
         // then
         assertThat(ids, is(Arrays.asList("S003", "S004")));
     }
+
+    @Test
+    public void should_return_empty_id_list_when_parse_student_ids_from_invalid_format() throws Exception {
+        // given
+        String stuIds = "S003，S 04";
+
+        // when
+        List<String> ids = Parser.parseStudentIds(stuIds);
+
+        // then
+        assertThat(ids.size(), is(0));
+    }
 }

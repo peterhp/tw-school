@@ -2,6 +2,7 @@ package util;
 
 import data.Student;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -13,6 +14,8 @@ import java.util.regex.Pattern;
 public class Parser {
     private static final String REG_STUDENT_INFORMATION =
             "([^，]+)，(\\w+)，数学：(\\d+)，语文：(\\d+)，英语：(\\d+)，编程：(\\d+)";
+    private static final String REG_STUDENT_IDS =
+            "(\\w+)(，(\\w+))*";
 
     public static Student parseStudent(String stuInfo) {
         Pattern pattern = Pattern.compile(REG_STUDENT_INFORMATION);
@@ -29,6 +32,13 @@ public class Parser {
     }
 
     public static List<String> parseStudentIds(String stuIds) {
-        return Arrays.asList(stuIds.split("，"));
+        Pattern pattern = Pattern.compile(REG_STUDENT_IDS);
+        Matcher matcher = pattern.matcher(stuIds);
+
+        if (matcher.matches()) {
+            return Arrays.asList(stuIds.split("，"));
+        } else {
+            return new ArrayList<>();
+        }
     }
 }

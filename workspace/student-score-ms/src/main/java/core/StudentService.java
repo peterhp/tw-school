@@ -1,7 +1,9 @@
 package core;
 
 import data.Klass;
+import data.Report;
 import data.Student;
+import util.ReportBuilder;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +38,10 @@ public class StudentService {
         }
 
         return students;
+    }
+
+    public static Report generateReport(List<Student> students) {
+        return ReportBuilder.generateReport(students);
     }
 
     public static StudentService getInstance() {

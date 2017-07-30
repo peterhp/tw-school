@@ -3,6 +3,7 @@ package app;
 import core.StudentService;
 import data.Student;
 import util.Parser;
+import util.ReportFormatter;
 
 import java.util.List;
 
@@ -19,17 +20,21 @@ public class PrintReportPage extends Page {
 
     @Override
     public String exec(String input) {
-        List<String> ids = Parser.parseStudentIds(input);
-        if (ids.isEmpty()) {
+        List<Student> students = obtainStudents(input);
+
+        if (students.isEmpty()) {
             retry = true;
             return super.exec(input);
         }
 
-        List<Student> students = StudentService.getInstance().findStudents(ids);
-        if (students.isEmpty()) {
-            retry = true;
-        }
+        nextPage = new HomePage();
 
-        return super.exec(input);
+        return ReportFormatter.generateReportString(
+                StudentService.generateReport(students)) + "\n";
+    }
+
+    private List<Student> obtainStudents(String input) {
+        return StudentService.getInstance().findStudents(
+                Parser.parseStudentIds(input));
     }
 }

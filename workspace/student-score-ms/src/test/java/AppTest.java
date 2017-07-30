@@ -148,7 +148,7 @@ public class AppTest {
         app.startup();
 
         String stu1 = "张三3，S0033，数学：75，语文：95，英语：80，编程：80";
-        String stu2 = "李四4，S0034，数学：75，语文：95，英语：80，编程：80";
+        String stu2 = "李四4，S0034，数学：85，语文：80，英语：70，编程：90";
         app.exec("1");
         app.exec(stu1);
         app.exec("1");
@@ -162,5 +162,38 @@ public class AppTest {
 
         // then
         assertThat(msg, is(AppMsg.PROMPT_PRINT_REPORT_RETRY));
+    }
+
+    @Test
+    public void should_return_report_message_and_main_menu_after_input_student_ids() throws Exception {
+        // given
+        App app = new App();
+        app.startup();
+
+
+        String stu1 = "张三，S003，数学：75，语文：95，英语：80，编程：80";
+        String stu2 = "李四，S004，数学：85，语文：80，英语：70，编程：90";
+        app.exec("1");
+        app.exec(stu1);
+        app.exec("1");
+        app.exec(stu2);
+
+        String stuIds = "S003，S004";
+        app.exec("2");
+
+        // when
+        String msg = app.exec(stuIds);
+
+        // then
+        String expected = "成绩单\n" +
+                "姓名|数学|语文|英语|编程|平均分|总分\n" +
+                "========================\n" +
+                "张三|75|95|80|80|82.5|330\n" +
+                "李四|85|80|70|90|81.25|325\n" +
+                "========================\n" +
+                "全班总平均分：327.5\n" +
+                "全班总分中位数：327.5\n" +
+                AppMsg.PROMPT_MAIN_MENU;
+        assertThat(msg, is(expected));
     }
 }

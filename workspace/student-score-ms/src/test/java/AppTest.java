@@ -88,4 +88,21 @@ public class AppTest {
         // then
         assertThat(msg, is(AppMsg.PROMPT_ADD_STUDENT_RETRY));
     }
+
+    @Test
+    public void should_return_success_message_and_main_menu_after_add_student_into_class() throws Exception {
+        // given
+        App app = new App();
+        app.startup();
+        app.exec("1");
+
+        String stuInfo = "张三，S003，数学：75，语文：95，英语：80，编程：80";
+
+        // when
+        String msg = app.exec(stuInfo);
+
+        // then
+        String expected = String.format(AppMsg.ALERT_ADD_STUDENT_SUCCESS, "张三") + AppMsg.PROMPT_MAIN_MENU;
+        assertThat(msg, is(expected));
+    }
 }

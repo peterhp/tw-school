@@ -1,13 +1,13 @@
 package app;
 
+import core.StudentService;
+import data.Student;
 import util.Parser;
 
 /**
  * Created by Shli on 30/07/2017.
  */
 public class AddStudentPage extends Page {
-
-
     private boolean retry = false;
 
     @Override
@@ -17,10 +17,16 @@ public class AddStudentPage extends Page {
 
     @Override
     public String exec(String input) {
-        if (Parser.parseStudent(input) == null) {
+        Student student = Parser.parseStudent(input);
+
+        if (student == null) {
             this.retry = true;
+            return super.exec(input);
         }
 
-        return super.exec(input);
+        StudentService.getInstance().addStudent(student);
+        nextPage = new HomePage();
+
+        return String.format(AppMsg.ALERT_ADD_STUDENT_SUCCESS, student.getName());
     }
 }

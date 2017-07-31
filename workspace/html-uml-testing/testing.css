@@ -1,7 +1,11 @@
-div.test-area {
+.test-area {
     margin: 20px;
 }
 
-form.choice-area {
+.choice-area {
     margin: 10px;
+}
+
+.answer-area {
+    margin-left: 20px;
 }

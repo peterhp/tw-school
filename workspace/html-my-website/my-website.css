@@ -2,6 +2,11 @@ body {
     margin: 0px;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
 header {
     padding: 20px 35px;
     height: 50px;
@@ -9,23 +14,35 @@ header {
     color: white;
 }
 
-.profit {
+.avatar-area {
     float: left;
 }
 
-nav {
-    float: right;
+.avatar-area div {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
-aside {
+.nav {
+    float: right;
+    margin-right: 50px;
+}
+
+.nav li {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.city-list {
     display: inline-block;
     vertical-align: top;
     width: 10%;
     padding: 20px 15px;
-    background-color: gray;
+    background-color: lightgray;
 }
 
-.item {
+.city-list li {
     margin: 10px;
 }
 
@@ -35,19 +52,19 @@ aside {
     width: 70%;
 }
 
-article {
+.article {
     display: inline-block;
     vertical-align: top;
-    width: 50%;
+    width: 60%;
     padding: 25px 20px;
 }
 
 .pic {
     display: inline-block;
     vertical-align: top;
-    width: 30%;
-    padding-top: 45px;
-    padding-left: 55px;
+    width: 20%;
+    padding-top: 75px;
+    padding-left: 45px;
 }
 
 footer {

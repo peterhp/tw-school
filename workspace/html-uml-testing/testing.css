@@ -1,3 +1,7 @@
 div.test-area {
+    margin: 20px;
+}
+
+form.choice-area {
     margin: 10px;
 }

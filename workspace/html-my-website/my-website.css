@@ -49,3 +49,10 @@ article {
     padding-top: 45px;
     padding-left: 55px;
 }
+
+footer {
+    padding: 5px;
+    text-align: center;
+    background-color: black;
+    color: white;
+}

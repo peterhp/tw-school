@@ -9,95 +9,124 @@
 
 <body>
 
-<h2>统一建模语言理论测试</h2>
+<section>
+    <h2>统一建模语言理论测试</h2>
+</section>
 
-<table>
-    <tr>
-        <td>考试科目：</td><td>统一建模语言</td>
-        <td>时间：</td><td>100分钟</td>
-        <td>得分：</td><td>100</td>
-    </tr>
-    <tr>
-        <td>班级：</td><td><input type="text" value="1班"></td>
-        <td>学号：</td><td><input type="text" value="001"></td>
-        <td>姓名：</td><td><input type="text" value="王小闹"></td>
-    </tr>
-</table>
+<section>
+    <table>
+        <tr>
+            <td>考试科目：</td>
+            <td>统一建模语言</td>
+            <td>时间：</td>
+            <td>100分钟</td>
+            <td>得分：</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>班级：</td>
+            <td><input type="text" value="1班"></td>
+            <td>学号：</td>
+            <td><input type="text" value="001"></td>
+            <td>姓名：</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="王小闹"></td>
+        </tr>
+    </table>
+</section>
 
-<h3>一、填空题（每空5分，共20分）</h3>
+<section>
+    <h3>一、填空题（每空5分，共20分）</h3>
 
-<div class="test-area">
-    1.UML的中文全称是：<input type="text" value="统一建模语言"><br>
-    2.对象最突出的特征是：<input type="text" value="封装性"><input type="text" value="继承性"><input type="text" value="多态性"><br>
-</div>
-
-<h3>二、选择题（每题10分，共20分）</h3>
-
-<div class="test-area">
-    <div>
-        <p>1.UML与软件工程的关系是：</p>
-        <form class="choice-area">
-            <input type="radio">（A）UML就是软件工程<br>
-            <input type="radio" checked="checked">（B）UML参与到软件工程中软件开发过程的几个阶段<br>
-            <input type="radio">（C）UML与软件工程无关<br>
-            <input type="radio">（D）UML是软件工程的一部分<br>
-        </form>
+    <div class="test-item-area">
+        1.UML的中文全称是：<input type="text" value="统一建模语言"><br>
+        2.对象最突出的特征是：<input type="text" value="封装性">&nbsp;
+        <input type="text" value="继承性">&nbsp;<input type="text" value="多态性"><br>
     </div>
+</section>
 
-    <div>
-        <p>2.Java语言支持：</p>
-        <form class="choice-area">
-            <input type="radio" checked="checked">（A）单继承<br>
-            <input type="radio">（B）多继承<br>
-            <input type="radio">（C）单继承和多继承都支持<br>
-            <input type="radio">（D）单继承和多继承都不支持<br>
-        </form>
+<section>
+    <h3>二、选择题（每题10分，共20分）</h3>
+
+    <div class="test-item-area">
+        <div>
+            <p>1.UML与软件工程的关系是：</p>
+            <div class="choice-area">
+                <input name="t2.1" type="radio">（A）UML就是软件工程<br>
+                <input name="t2.1" type="radio" checked="checked">（B）UML参与到软件工程中软件开发过程的几个阶段<br>
+                <input name="t2.1" type="radio">（C）UML与软件工程无关<br>
+                <input name="t2.1" type="radio">（D）UML是软件工程的一部分<br>
+            </div>
+        </div>
+
+        <div>
+            <p>2.Java语言支持：</p>
+            <div class="choice-area">
+                <input name="t2.2" type="radio" checked="checked">（A）单继承<br>
+                <input name="t2.2" type="radio">（B）多继承<br>
+                <input name="t2.2" type="radio">（C）单继承和多继承都支持<br>
+                <input name="t2.2" type="radio">（D）单继承和多继承都不支持<br>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
-<h3>三、多选题（每题10分，共20分）</h3>
+<section>
+    <h3>三、多选题（每题10分，共20分）</h3>
 
-<div class="test-area">
-    <div>
-        <p>1.用例的粒度分为以下哪三种：</p>
-        <form class="choice-area">
-            <input type="checkbox" checked="checked">（A）概述级<br>
-            <input type="checkbox" checked="checked">（B）需求级<br>
-            <input type="checkbox">（C）用户目标级<br>
-            <input type="checkbox" checked="checked">（D）子功能级<br>
-        </form>
+    <div class="test-item-area">
+        <div>
+            <p>1.用例的粒度分为以下哪三种：</p>
+            <div class="choice-area">
+                <input name="t3.1" type="checkbox" checked="checked">（A）概述级<br>
+                <input name="t3.1" type="checkbox" checked="checked">（B）需求级<br>
+                <input name="t3.1" type="checkbox">（C）用户目标级<br>
+                <input name="t3.1" type="checkbox" checked="checked">（D）子功能级<br>
+            </div>
+        </div>
 
-        <p>2.类图由以下哪三部分组成：</p>
-        <form class="choice-area">
-            <input type="checkbox" checked="checked">（A）名称（Name）<br>
-            <input type="checkbox" checked="checked">（B）属性（Attribute）<br>
-            <input type="checkbox" checked="checked">（C）操作（Operation）<br>
-            <input type="checkbox">（D）方法（Function）<br>
-        </form>
+        <div>
+            <p>2.类图由以下哪三部分组成：</p>
+            <div class="choice-area">
+                <input name="t3.2" type="checkbox" checked="checked">（A）名称（Name）<br>
+                <input name="t3.2" type="checkbox" checked="checked">（B）属性（Attribute）<br>
+                <input name="t3.2" type="checkbox" checked="checked">（C）操作（Operation）<br>
+                <input name="t3.2" type="checkbox">（D）方法（Function）<br>
+            </div>
+        </div>
     </div>
+</section>
 
+<section>
+    <h3>四、判断题（每题10分，共20分）</h3>
 
-</div>
+    <div class="test-item-area">
+        1.用例图只是用于和客户交流和沟通的，用于确定需求。
+        <input name="t4.1" type="radio">√
+        <input name="t4.1" type="radio" checked="checked">×
+        <br>
 
-<h3>四、判断题（每题10分，共20分）</h3>
-
-<div class="test-area">
-    <form>1.用例图只是用于和客户交流和沟通的，用于确定需求。 <input type="radio">√ <input type="radio" checked="checked">×</form>
-    <form>2.在状态图中，终止状态在一个状态图中允许有任意多个。 <input type="radio" checked="checked">√ <input type="radio">×</form>
-</div>
-
-<h3>五、简单题（每题20分，共20分）</h3>
-
-<div class="test-area">
-    1.简述什么是模型以及模型的表现形式？<br>
-    <div class="answer-area">
-        <textarea rows="10" cols="100">模型是对现实世界的简化和抽象，模型是对所研究的系统、过程、事物或概念的一种表达形式。可以是物理实体；可以是某种图形；或者是一种数学表达式。</textarea>
+        2.在状态图中，终止状态在一个状态图中允许有任意多个。
+        <input name="t4.2" type="radio" checked="checked">√
+        <input name="t4.2" type="radio">×
+        <br>
     </div>
-</div>
+</section>
 
-<div>
+<section>
+    <h3>五、简单题（每题20分，共20分）</h3>
+
+    <div class="test-item-area">
+        1.简述什么是模型以及模型的表现形式？<br>
+        <div class="answer-area">
+            <textarea rows="10"
+                      cols="100">模型是对现实世界的简化和抽象，模型是对所研究的系统、过程、事物或概念的一种表达形式。可以是物理实体；可以是某种图形；或者是一种数学表达式。</textarea>
+        </div>
+    </div>
+</section>
+
+<section>
     <input type="button" value="计算分数">
-</div>
+</section>
 
 </body>
 

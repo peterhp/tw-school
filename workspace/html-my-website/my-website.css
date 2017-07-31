@@ -17,16 +17,35 @@ nav {
     float: right;
 }
 
-.content {
-    display: inline-block;
-}
-
 aside {
+    display: inline-block;
+    vertical-align: top;
+    width: 10%;
     padding: 20px 15px;
-    width: 100px;
     background-color: gray;
 }
 
 .item {
     margin: 10px;
+}
+
+.content {
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+}
+
+article {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding: 25px 20px;
+}
+
+.pic {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    padding-top: 45px;
+    padding-left: 55px;
 }

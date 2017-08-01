@@ -1,7 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
 header {
     padding: 20px 30px;
     background: black;
     color: white;
+}
+
+.header-text-website {
+    margin-left: 10px;
 }
 
 ul {
@@ -15,7 +23,32 @@ ul li {
 
 .welcome {
     height: 800px;
-    background: grey;
+    background-color: gray;
+    background-image: url("../img/mountain.png");
+    background-size: cover;
+}
+
+.welcome-head {
+    font-weight: bold;
+    font-size: 100px;
+}
+
+.welcome-text {
+    font-size: 50px;
+    margin: 20px auto 100px auto;
+}
+
+.welcome span {
+    padding: 15px 30px;
+    margin-right: 20px;
+    border: 3px solid white;
+    font-size: 28px;
+}
+
+.welcome-text-area {
+    padding-top: 130px;
+    text-align: center;
+    color: white;
 }
 
 .feature {

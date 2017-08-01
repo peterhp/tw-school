@@ -1,7 +1,16 @@
 header {
-    height: 96px;
+    padding: 20px 30px;
     background: black;
     color: white;
+}
+
+ul {
+    list-style: none;
+    padding: 15px;
+}
+
+ul li {
+    text-align: center;
 }
 
 .welcome {

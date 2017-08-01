@@ -1,0 +1,25 @@
+header {
+    height: 96px;
+    background: black;
+    color: white;
+}
+
+.welcome {
+    height: 800px;
+    background: grey;
+}
+
+.feature {
+    height: 400px;
+}
+
+.people {
+    height:400px;
+    background: gainsboro;
+}
+
+footer {
+    height: 200px;
+    background: black;
+    color: white;
+}

@@ -3,6 +3,16 @@
  */
 
 $(document).ready(function () {
+    $("#submit").click(function () {
+        saveTestData(getStudentAndItsAnswers());
+    });
+});
+
+const saveTestData = function (student) {
+    sessionStorage.setItem("student", JSON.stringify(student));
+}
+
+const getStudentAndItsAnswers = function () {
     const student = getStudentInfo();
 
     student.answer.t1 = getAnswerForTestItem1();
@@ -11,12 +21,12 @@ $(document).ready(function () {
     student.answer.t4 = getAnswerForTestItem4();
     student.answer.t5 = getAnswerForTestItem5();
 
-    console.log(student.answer);
-});
+    return student;
+};
 
 const getStudentInfo = function () {
     return {
-        id: $("#stu-id").val(),
+        sid: $("#stu-id").val(),
         name: $("#stu-name").val(),
         klass: $("#stu-class").val(),
         answer: {}
@@ -26,7 +36,7 @@ const getStudentInfo = function () {
 const getAnswerForTestItem1 = function () {
     return {
         q1: $("input[name='t1.1']").val(),
-        q2: $("input[name='t1.2']").map(function () {return $(this).val();})
+        q2: $("input[name='t1.2']").map(function () {return $(this).val();}).get()
     };
 };
 
@@ -39,8 +49,8 @@ const getAnswerForTestItem2 = function () {
 
 const getAnswerForTestItem3 = function () {
     return {
-        q1: $("input[name='t3.1']:checked").map(function () {return $(this).val();}),
-        q2: $("input[name='t3.2']:checked").map(function () {return $(this).val();})
+        q1: $("input[name='t3.1']:checked").map(function () {return $(this).val();}).get(),
+        q2: $("input[name='t3.2']:checked").map(function () {return $(this).val();}).get()
     };
 };
 

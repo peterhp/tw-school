@@ -5,6 +5,7 @@
 $(document).ready(function () {
     $("#submit").click(function () {
         saveTestData(getStudentAndItsAnswers());
+        window.location.replace("answer-sheet.html");
     });
 });
 

@@ -1,6 +1,7 @@
 /**
  * Created by Shli on 02/08/2017.
  */
+
 $(document).ready(function () {
     displayStudentAndAnswers(loadTestData());
 });
@@ -20,7 +21,8 @@ const displayStudentAndAnswers = function (student) {
 };
 
 const displayStudentInfo = function (student) {
-    $("#stu-info").html(`班级：${student.klass}<br>学号：${student.sid}<br>姓名：${student.name}`);
+    $("#stu-info").html(`班级：${student.klass}<br>学号：${student.sid}<br>姓名：${student.name}<br>` +
+            `E-Mail：${student.email}<br>身份证：${student.pid}`);
 };
 
 const displayTestItem1 = function (t1) {

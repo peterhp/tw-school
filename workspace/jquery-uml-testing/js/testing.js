@@ -4,8 +4,12 @@
 
 $(document).ready(function () {
     $("#submit").click(function () {
-        saveTestData(getStudentAndItsAnswers());
-        window.location.replace("answer-sheet.html");
+        if (validateTestInfo()) {
+            saveTestData(getStudentAndItsAnswers());
+            window.location.replace("answer-sheet.html");
+        } else {
+            alert("个人信息错误或不全，请正确填写！");
+        }
     });
 });
 
@@ -27,9 +31,11 @@ const getStudentAndItsAnswers = function () {
 
 const getStudentInfo = function () {
     return {
-        sid: $("#stu-id").val(),
-        name: $("#stu-name").val(),
-        klass: $("#stu-class").val(),
+        klass: $("#klass").val(),
+        sid: $("#sid").val(),
+        name: $("#name").val(),
+        email: $("#email").val(),
+        pid: $("#pid").val(),
         answer: {}
     };
 };

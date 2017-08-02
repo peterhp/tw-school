@@ -27,12 +27,15 @@ header {
     text-decoration: none;
 }
 
-ul {
+nav ul {
     list-style: none;
     padding: 15px;
+    margin: 0;
+    text-align: right;
 }
 
-ul li {
+nav ul li {
+    display: inline-block;
     text-align: center;
 }
 

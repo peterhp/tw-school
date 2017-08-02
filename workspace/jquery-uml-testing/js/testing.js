@@ -3,14 +3,25 @@
  */
 
 $(document).ready(function () {
-    let student = getStudentInfo();
-    console.log(student.id + student.name + student.klass);
+    const student = getStudentInfo();
+    student.answer.push(getAnswerForTestItem1());
+
+    console.log(student);
 });
 
-let getStudentInfo = function () {
+const getStudentInfo = function () {
     return {
         id: $("#stu-id").val(),
         name: $("#stu-name").val(),
-        klass: $("#stu-class").val()
+        klass: $("#stu-class").val(),
+        answer: []
     };
+};
+
+const getAnswerForTestItem1 = function () {
+    const answers = [];
+    for (let elem of $(".t1")) {
+        answers.push(elem.value);
+    }
+    return answers;
 };

@@ -9,8 +9,9 @@ $(document).ready(function () {
     student.answer.t2 = getAnswerForTestItem2();
     student.answer.t3 = getAnswerForTestItem3();
     student.answer.t4 = getAnswerForTestItem4();
+    student.answer.t5 = getAnswerForTestItem5();
 
-    console.log(student.answer.t4);
+    console.log(student.answer);
 });
 
 const getStudentInfo = function () {
@@ -24,8 +25,8 @@ const getStudentInfo = function () {
 
 const getAnswerForTestItem1 = function () {
     return {
-        q1: $(".t1-1").val(),
-        q2: $(".t1-2").map(function () {return $(this).val();})
+        q1: $("input[name='t1.1']").val(),
+        q2: $("input[name='t1.2']").map(function () {return $(this).val();})
     };
 };
 
@@ -47,5 +48,11 @@ const getAnswerForTestItem4 = function () {
     return {
         q1: $("input[name='t4.1']:checked").val(),
         q2: $("input[name='t4.2']:checked").val()
+    };
+};
+
+const getAnswerForTestItem5 = function () {
+    return {
+        q1: $("textarea[name='t5.1']").text()
     };
 };

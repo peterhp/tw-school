@@ -52,7 +52,7 @@ ul li {
 }
 
 .feature {
-    padding: 50px 100px;
+    padding: 50px 150px;
     text-align: center;
 }
 
@@ -79,8 +79,47 @@ ul li {
 }
 
 .people {
-    height:400px;
+    padding: 50px 150px;
+    text-align: center;
     background: #EFEFEF;
+}
+
+.people-item {
+    padding: 20px 30px;
+    text-align: left;
+}
+
+.people-talk {
+    padding: 15px;
+    margin-bottom: 15px;
+    background: white;
+    font-size: 16px;
+}
+
+.people-avatar {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.people-avatar img {
+    border-radius: 50%;
+}
+
+.people-info {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.people-name {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.people-title {
+    margin: 0;
+    font-size: 14px;
+    color: #999;
 }
 
 footer {

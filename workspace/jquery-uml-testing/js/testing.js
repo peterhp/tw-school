@@ -7,8 +7,9 @@ $(document).ready(function () {
 
     student.answer.t1 = getAnswerForTestItem1();
     student.answer.t2 = getAnswerForTestItem2();
+    student.answer.t3 = getAnswerForTestItem3();
 
-    console.log(student.answer.t2);
+    console.log(student.answer.t3);
 });
 
 const getStudentInfo = function () {
@@ -31,5 +32,12 @@ const getAnswerForTestItem2 = function () {
     return {
         q1: $("input[name='t2.1']:checked").val(),
         q2: $("input[name='t2.2']:checked").val()
+    };
+};
+
+const getAnswerForTestItem3 = function () {
+    return {
+        q1: $("input[name='t3.1']:checked").map(function () {return $(this).val();}),
+        q2: $("input[name='t3.2']:checked").map(function () {return $(this).val();})
     };
 };

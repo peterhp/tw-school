@@ -8,8 +8,9 @@ $(document).ready(function () {
     student.answer.t1 = getAnswerForTestItem1();
     student.answer.t2 = getAnswerForTestItem2();
     student.answer.t3 = getAnswerForTestItem3();
+    student.answer.t4 = getAnswerForTestItem4();
 
-    console.log(student.answer.t3);
+    console.log(student.answer.t4);
 });
 
 const getStudentInfo = function () {
@@ -39,5 +40,12 @@ const getAnswerForTestItem3 = function () {
     return {
         q1: $("input[name='t3.1']:checked").map(function () {return $(this).val();}),
         q2: $("input[name='t3.2']:checked").map(function () {return $(this).val();})
+    };
+};
+
+const getAnswerForTestItem4 = function () {
+    return {
+        q1: $("input[name='t4.1']:checked").val(),
+        q2: $("input[name='t4.2']:checked").val()
     };
 };

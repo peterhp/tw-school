@@ -7,13 +7,29 @@ $(document).ready(function () {
        rules: {
            name: "required",
            gender: "required",
-           class: "required"
+           class: "required",
+           phone: {
+               required: true,
+               digits: true
+           },
+           email: {
+               required: true,
+               email: true
+           }
        },
 
        messages: {
            name: "Please input your name.",
            gender: "Please select your gender.",
-           class: "Please input your class."
+           class: "Please input your class.",
+           phone: {
+               required: "Please input your phone number.",
+               digits: "Please input valid phone number."
+           },
+           email: {
+               required: "Please input your email.",
+               email: "Please input valid email."
+           }
        },
 
        errorLabelContainer: $("#err"),

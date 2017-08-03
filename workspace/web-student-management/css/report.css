@@ -1,0 +1,25 @@
+form {
+    padding: 25px;
+}
+
+form input {
+    margin: 0 10px;
+}
+
+table {
+    margin: auto;
+}
+
+table th, table td {
+    padding: 5px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.stu-report p {
+    margin: 15px;
+}
+
+.stu-report p label {
+    margin: 0;
+}

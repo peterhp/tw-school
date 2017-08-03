@@ -2,7 +2,10 @@
  * Created by Shli on 03/08/2017.
  */
 
-const TABLE_HEADER = "<tr><th>sid</th><th>name</th><th>gender</th><th>class</th></tr>";
+const TABLE_HEADER = "<tr>" +
+    "<th>sid</th><th>name</th><th>gender</th><th>class</th>" +
+    "<th>personal id</th><th>native place</th><th>phone</th><th>e-mail</th>" +
+    "</tr>";
 
 const students = JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
 
@@ -34,6 +37,10 @@ const generateStudentsView = function (students) {
 };
 
 const generateStudentTrView = function (student) {
-    return `<tr><td>${student.sid}</td><td>${student.name}</td>` +
-            `<td>${student.gender}</td><td>${student.class}</td></tr>`;
+    return `<tr>` +
+        `<td>${student.sid}</td><td>${student.name}</td>` +
+        `<td>${student.gender}</td><td>${student.class}</td>`+
+        `<td>${student.pid}</td><td>${student.native}</td>` +
+        `<td>${student.phone}</td><td>${student.email}</td>` +
+        `</tr>`;
 };

@@ -41,3 +41,14 @@ header {
 .main-nav ul li a {
     padding: 15px;
 }
+
+footer {
+    background: #222;
+    color: #999;
+}
+
+.site-info {
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+}

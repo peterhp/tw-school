@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+a:link, a:visited, a:active {
+    text-decoration: none;
+    color: #999;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+header {
+    background: #222;
+    color: #999;
+}
+
+.logo {
+    padding: 15px 35px;
+}
+
+.main-nav ul {
+    margin: 0;
+    list-style: none;
+    text-align: right;
+}
+
+.main-nav ul li {
+    padding: 15px 0;
+    display: inline-block;
+}
+
+.main-nav ul li a {
+    padding: 15px;
+}

@@ -1,0 +1,17 @@
+.welcome {
+    height: 800px;
+    padding: 80px 10%;
+    text-align: center;
+    background-image: url("../img/bird.jpg");
+    background-size: cover;
+    color: #ccc;
+}
+
+.welcome h1 {
+    font-size: 56px;
+}
+
+.welcome p {
+    font-size: 32px;
+    font-stretch: expanded;
+}

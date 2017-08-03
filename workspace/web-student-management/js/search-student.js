@@ -2,14 +2,31 @@
  * Created by Shli on 03/08/2017.
  */
 
+const TABLE_HEADER = "<tr><th>sid</th><th>name</th><th>gender</th><th>class</th></tr>";
+
 const students = JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
 
 $(document).ready(function () {
     fillTableWithStudentsView(generateStudentsView(students));
+
+    $("form").submit(function (event) {
+        event.preventDefault();
+
+        const input = $("input[name='search']").val();
+        if (input.length > 0) {
+            fillTableWithStudentsView(generateStudentsView(
+                    findStudentsByIdOrName(input)));
+        }
+    });
 });
 
 const fillTableWithStudentsView = function (htmlView) {
-    $("table").html($("table").html() + htmlView);
+    $("table").html(TABLE_HEADER + htmlView);
+};
+
+const findStudentsByIdOrName = function (value) {
+    return students.filter(student =>
+            student.sid === value || student.name === value);
 };
 
 const generateStudentsView = function (students) {

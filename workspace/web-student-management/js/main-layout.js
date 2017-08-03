@@ -3,6 +3,6 @@
  */
 
 $(function () {
-   $("header").load("page/header.html");
-   $("footer").load("page/footer.html");
+   $("header").load("header.html");
+   $("footer").load("footer.html");
 });

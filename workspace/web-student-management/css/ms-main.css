@@ -52,3 +52,8 @@ footer {
     text-align: center;
     font-size: 18px;
 }
+
+.content {
+    padding: 35px 10%;
+    text-align: center;
+}

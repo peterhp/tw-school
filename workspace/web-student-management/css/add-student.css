@@ -1,0 +1,18 @@
+table {
+    margin: 25px auto 0;
+    font-size: 18px;
+}
+
+table tr td {
+    padding: 5px 10px;
+    text-align: left;
+}
+
+label {
+    margin: 0;
+}
+
+.btn {
+    margin: 10px;
+    width: 100px;
+}

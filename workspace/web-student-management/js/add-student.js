@@ -8,6 +8,7 @@ $(document).ready(function () {
            name: "required",
            gender: "required",
            class: "required",
+           native: "required",
            phone: {
                required: true,
                digits: true
@@ -15,6 +16,11 @@ $(document).ready(function () {
            email: {
                required: true,
                email: true
+           },
+           pid: {
+               required: true,
+               digits: true,
+               rangelength: [18, 18]
            }
        },
 
@@ -22,6 +28,7 @@ $(document).ready(function () {
            name: "Please input your name.",
            gender: "Please select your gender.",
            class: "Please input your class.",
+           native: "Please select your native place.",
            phone: {
                required: "Please input your phone number.",
                digits: "Please input valid phone number."
@@ -29,6 +36,11 @@ $(document).ready(function () {
            email: {
                required: "Please input your email.",
                email: "Please input valid email."
+           },
+           pid: {
+               required: "Please input your personal id.",
+               digits: "Please input valid personal id.",
+               rangelength: "Please input valid personal id."
            }
        },
 

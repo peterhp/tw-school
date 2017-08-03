@@ -20,9 +20,9 @@ $(document).ready(function () {
 
        submitHandler: function (form) {
            const student = getStudentInformation();
-           saveStudentInLocalStorage(student);
+           saveStudentInStorage(student);
 
-           $("#msg").text(`Succeed to append student ${student.name}.`);
+           $("#msg").text(`Succeed to append student [${student.sid}: ${student.name}].`);
 
            //form.submit();
            form.reset();
@@ -30,7 +30,7 @@ $(document).ready(function () {
    });
 });
 
-const saveStudentInLocalStorage = function (newStudent) {
+const saveStudentInStorage = function (newStudent) {
     const students = JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
 
     students.push(newStudent);

@@ -23,17 +23,17 @@ public class EmployeeController {
     @RequestMapping(value = "/employees", method = RequestMethod.POST)
     public ResponseEntity<?> addEmployee(@RequestBody Employee employee) {
         if (employees.containsKey(employee.getId())) {
-            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Object>(HttpStatus.CONFLICT);
         } else {
             employees.put(employee.getId(), employee);
-            return new ResponseEntity<Object>(HttpStatus.ACCEPTED);
+            return new ResponseEntity<Object>(HttpStatus.CREATED);
         }
     }
 
     @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getEmployee(@PathVariable(value = "id") String id) {
         if (employees.containsKey(id)) {
-            return new ResponseEntity<Employee>(employees.get(id), HttpStatus.FOUND);
+            return new ResponseEntity<Employee>(employees.get(id), HttpStatus.OK);
         } else {
             return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
         }

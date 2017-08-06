@@ -54,4 +54,14 @@ public class EmployeeController {
             return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(value = "/employees/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteEmployee(@PathVariable(value = "id") String id) {
+        if (employees.containsKey(id)) {
+            employees.remove(id);
+            return new ResponseEntity<Object>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

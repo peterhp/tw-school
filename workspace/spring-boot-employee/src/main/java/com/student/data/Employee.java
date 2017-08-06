@@ -8,6 +8,16 @@ public class Employee {
     private String name;
     private String position;
 
+    public Employee() {
+
+    }
+
+    public Employee(String id, String name, String position) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+    }
+
     public void setId(String id) {
         this.id = id;
     }

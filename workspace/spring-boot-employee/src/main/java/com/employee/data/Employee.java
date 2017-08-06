@@ -1,4 +1,7 @@
-package com.student.data;
+package com.employee.data;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Shli on 06/08/2017.
@@ -7,6 +10,8 @@ public class Employee {
     private String id;
     private String name;
     private String position;
+
+    private Map<String, Address> addresses = new HashMap<>();
 
     public Employee() {
 
@@ -30,6 +35,10 @@ public class Employee {
         this.position = position;
     }
 
+    public void setAddresses(Map<String, Address> addresses) {
+        this.addresses = addresses;
+    }
+
     public String getId() {
         return id;
     }
@@ -40,5 +49,13 @@ public class Employee {
 
     public String getPosition() {
         return position;
+    }
+
+    public Map<String, Address> getAddresses() {
+        return addresses;
+    }
+
+    public void updateAddress(String type, Address address) {
+        addresses.put(type, address);
     }
 }

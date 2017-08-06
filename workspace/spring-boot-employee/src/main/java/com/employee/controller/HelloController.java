@@ -1,4 +1,4 @@
-package com.student.conroller;
+package com.employee.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

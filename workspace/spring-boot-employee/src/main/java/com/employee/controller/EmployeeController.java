@@ -1,8 +1,8 @@
-package com.student.conroller;
+package com.employee.controller;
 
-import com.student.data.Employee;
-import com.student.data.EmployeeInMemoryService;
-import com.student.data.EmployeeService;
+import com.employee.data.Address;
+import com.employee.data.Employee;
+import com.employee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +57,18 @@ public class EmployeeController {
     @RequestMapping(value = "/employees/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteEmployee(@PathVariable(value = "id") String id) {
         if (employeeService.deleteEmployee(id)) {
+            return new ResponseEntity<Object>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/employees/{id}/address/{type}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateEmployeeAddress(
+            @PathVariable(value = "id") String id,
+            @PathVariable(value = "type") String type,
+            @RequestBody Address address) {
+        if (employeeService.updateEmployeeAddress(id, type, address)) {
             return new ResponseEntity<Object>(HttpStatus.OK);
         } else {
             return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);

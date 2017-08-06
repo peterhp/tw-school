@@ -1,4 +1,7 @@
-package com.student.data;
+package com.employee.service;
+
+import com.employee.data.Address;
+import com.employee.data.Employee;
 
 import java.util.List;
 
@@ -14,4 +17,6 @@ public interface EmployeeService {
 
     Employee getEmployeeById(String id);
     List<Employee> getAllEmployees();
+
+    boolean updateEmployeeAddress(String id, String addrType, Address address);
 }

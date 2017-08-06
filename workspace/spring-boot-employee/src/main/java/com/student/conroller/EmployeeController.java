@@ -16,8 +16,8 @@ public class EmployeeController {
     private Map<String, Employee> employees = new HashMap<>();
 
     public EmployeeController() {
-        //employees.put("E003", new Employee("E003", "San", "BA"));
-        //employees.put("E004", new Employee("E004", "Si", "Dev"));
+        employees.put("E003", new Employee("E003", "San", "BA"));
+        employees.put("E004", new Employee("E004", "Si", "Dev"));
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.POST)
@@ -43,5 +43,15 @@ public class EmployeeController {
     public ResponseEntity<?> getAllEmployees() {
         return new ResponseEntity<Employee []>(
                 employees.values().toArray(new Employee[employees.size()]), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/employees", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateEmployee(@RequestBody Employee employee) {
+        if (employees.containsKey(employee.getId())) {
+            employees.put(employee.getId(), employee);
+            return new ResponseEntity<Object>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
+        }
     }
 }

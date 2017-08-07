@@ -1,4 +1,4 @@
-package core;
+package service;
 
 import data.Klass;
 import data.Report;

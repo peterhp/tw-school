@@ -1,6 +1,6 @@
 package controller;
 
-import core.StudentService;
+import service.StudentService;
 import data.Student;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

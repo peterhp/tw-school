@@ -1,6 +1,6 @@
 package app;
 
-import core.StudentService;
+import service.StudentService;
 import data.Student;
 import util.Parser;
 

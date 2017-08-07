@@ -14,6 +14,7 @@ import java.util.List;
  * Created by Shli on 06/08/2017.
  */
 @RestController
+@RequestMapping("/employees")
 public class EmployeeController {
     private EmployeeService employeeService;
 
@@ -22,7 +23,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @RequestMapping(value = "/employees", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> addEmployee(@RequestBody Employee employee) {
         if (employeeService.addEmployee(employee)) {
             return new ResponseEntity<Object>(HttpStatus.CREATED);
@@ -31,7 +32,7 @@ public class EmployeeController {
         }
     }
 
-    @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getEmployee(@PathVariable(value = "id") String id) {
         Employee employee = employeeService.getEmployeeById(id);
 
@@ -39,14 +40,16 @@ public class EmployeeController {
                 new ResponseEntity<Object>(HttpStatus.NOT_FOUND));
     }
 
-    @RequestMapping(value = "/employees", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> getAllEmployees() {
         return new ResponseEntity<List<Employee>>(
                 employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/employees", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateEmployee(@RequestBody Employee employee) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateEmployee(
+            @PathVariable(value = "id") String id,
+            @RequestBody Employee employee) {
         if (employeeService.updateEmployee(employee)) {
             return new ResponseEntity<Object>(HttpStatus.OK);
         } else {
@@ -54,7 +57,7 @@ public class EmployeeController {
         }
     }
 
-    @RequestMapping(value = "/employees/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteEmployee(@PathVariable(value = "id") String id) {
         if (employeeService.deleteEmployee(id)) {
             return new ResponseEntity<Object>(HttpStatus.OK);
@@ -63,10 +66,10 @@ public class EmployeeController {
         }
     }
 
-    @RequestMapping(value = "/employees/{id}/address/{type}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{eid}/addresses/{aid}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateEmployeeAddress(
-            @PathVariable(value = "id") String id,
-            @PathVariable(value = "type") String type,
+            @PathVariable(value = "eid") String id,
+            @PathVariable(value = "aid") String type,
             @RequestBody Address address) {
         if (employeeService.updateEmployeeAddress(id, type, address)) {
             return new ResponseEntity<Object>(HttpStatus.OK);

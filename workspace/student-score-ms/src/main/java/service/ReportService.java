@@ -4,6 +4,7 @@ import data.Report;
 import data.Student;
 import exception.InvalidStudentIdsFormatException;
 import exception.UnexistedStudentException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.Parser;
 import util.ReportBuilder;
@@ -15,7 +16,13 @@ import java.util.List;
  */
 @Service
 public class ReportService implements IReportService {
-    private StudentService studentService = StudentService.getInstance();
+
+    private IStudentService studentService;
+
+    @Autowired
+    public void setStudentService(IStudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @Override
     public Report genReport(String ids) throws InvalidStudentIdsFormatException, UnexistedStudentException {

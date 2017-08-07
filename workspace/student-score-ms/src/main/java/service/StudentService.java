@@ -3,6 +3,7 @@ package service;
 import data.Klass;
 import data.Report;
 import data.Student;
+import org.springframework.stereotype.Service;
 import util.ReportBuilder;
 
 import java.util.LinkedList;
@@ -11,7 +12,8 @@ import java.util.List;
 /**
  * Created by Shli on 30/07/2017.
  */
-public class StudentService {
+@Service
+public class StudentService implements IStudentService {
     private static StudentService instance = new StudentService();
 
     private Klass klass = new Klass();

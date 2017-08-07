@@ -6,14 +6,25 @@
  * user guide available at https://docs.gradle.org/3.4.1/userguide/java_library_plugin.html
  */
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.5.RELEASE")
+    }
+}
+
 // Apply the java-library plugin to add support for Java Library
 apply plugin: 'java-library'
 apply plugin: 'idea'
 apply plugin: 'jacoco'
 
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
 
 jacocoTestReport {
   reports {
@@ -46,4 +57,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+
+    // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    // end::actuator[]
+    testCompile("junit:junit")
 }

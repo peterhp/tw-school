@@ -81,8 +81,7 @@ $(document).ready(function () {
            saveStudentInStorage(student);
            submitToRemote("http://localhost:8080/students", student);
 
-           //form.submit();
-           //form.reset();
+           form.reset();
        }
    });
 });

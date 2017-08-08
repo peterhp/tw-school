@@ -22,7 +22,7 @@ public class ParserTest {
         Student stu = Parser.parseStudent(stuInfo);
 
         // then
-        assertThat(stu.getId(), is("S003"));
+        assertThat(stu.getSid(), is("S003"));
         assertThat(stu.getName(), is("张三"));
         assertThat(stu.getMathScore(), is(75));
         assertThat(stu.getChineseScore(), is(95));

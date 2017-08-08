@@ -19,8 +19,23 @@ $(document).ready(function () {
            },
            pid: {
                required: true,
-               digits: true,
-               rangelength: [18, 18]
+               digits: true
+           },
+           mathScore: {
+               required: true,
+               range: [0, 100]
+           },
+           chineseScore: {
+               required: true,
+               range: [0, 100]
+           },
+           englishScore: {
+               required: true,
+               range: [0, 100]
+           },
+           programScore: {
+               required: true,
+               range: [0, 100]
            }
        },
 
@@ -39,24 +54,44 @@ $(document).ready(function () {
            },
            pid: {
                required: "Please input your personal id.",
-               digits: "Please input valid personal id.",
-               rangelength: "Please input valid personal id."
+               digits: "Please input valid personal id."
+           },
+           mathScore: {
+               required: "Please input your score",
+               range: "Please input valid score"
+           },
+           chineseScore: {
+               required: "Please input your score",
+               range: "Please input valid score"
+           },
+           englishScore: {
+               required: "Please input your score",
+               range: "Please input valid score"
+           },
+           programScore: {
+               required: "Please input your score",
+               range: "Please input valid score"
            }
        },
 
        errorLabelContainer: $("#err"),
 
        submitHandler: function (form) {
-           const student = getStudentInformation();
+           const student = getStudentInformationForStorage();
            saveStudentInStorage(student);
-
-           $("#msg").text(`Succeed to append student [${student.sid}: ${student.name}].`);
+           submitToRemote("http://localhost:8080/students", student);
 
            //form.submit();
-           form.reset();
+           //form.reset();
        }
    });
 });
+
+const submitToStorage = function () {
+    const student = getStudentInformationForStorage();
+    saveStudentInStorage(student);
+    $("#msg").text(`Succeed to append student [${student.sid}: ${student.name}].`);
+};
 
 const saveStudentInStorage = function (newStudent) {
     const students = JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
@@ -65,19 +100,41 @@ const saveStudentInStorage = function (newStudent) {
     saveDataInStorage(KEY_STUDENT_LIST, JSON.stringify(students));
 };
 
-const getStudentInformation = function () {
-    const inputs = $("form").serializeArray();
-
-    const student = {sid: generateSidForNewStudent()};
-    for (let kv of inputs) {
-        student[kv.name] = kv.value;
-    }
-
+const getStudentInformationForStorage = function () {
+    const student = generateStudentFromForm();
+    student.sid = generateSidForNewStudentFromStorage();
     return student;
 };
 
-const generateSidForNewStudent = function () {
+const generateSidForNewStudentFromStorage = function () {
     const sid = parseInt(getDataInStorage(KEY_CURRENT_SID)) + 1;
     saveDataInStorage(KEY_CURRENT_SID, sid.toString());
     return `S${sid}`;
+};
+
+const submitToRemote = function (url, student) {
+    $.ajax({
+        url: url,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(student),
+        dataType: "json",
+        statusCode: {
+            200: function (){
+                $("#msg").text(`Succeed to append student [${student.name}].`);
+            },
+            406: function () {
+                $("#msg").text(`Fail to append student [${student.name}].`);
+            }
+        }
+    });
+};
+
+const generateStudentFromForm = function () {
+    const inputs = $("form").serializeArray();
+    const student = {};
+    for (let kv of inputs) {
+        student[kv.name] = kv.value;
+    }
+    return student;
 };

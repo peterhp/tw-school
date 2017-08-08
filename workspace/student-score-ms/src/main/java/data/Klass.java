@@ -10,8 +10,8 @@ public class Klass {
     private Map<String, Student> students = new HashMap<>();
 
     public boolean addStudent(Student student) {
-        if (!students.containsKey(student.getId())) {
-            students.put(student.getId(), student);
+        if (!students.containsKey(student.getSid())) {
+            students.put(student.getSid(), student);
             return true;
         }
         return false;

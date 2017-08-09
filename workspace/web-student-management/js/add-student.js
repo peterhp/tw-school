@@ -77,10 +77,7 @@ $(document).ready(function () {
        errorLabelContainer: $("#err"),
 
        submitHandler: function (form) {
-           const student = generateStudentForStorage();
-           saveStudentInStorage(student);
-
-           submitToRemote("http://localhost:8080/students", student);
+           submitToRemote("http://localhost:8080/students", generateStudentFromForm());
 
            form.reset();
        }

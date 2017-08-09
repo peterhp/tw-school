@@ -8,9 +8,11 @@ $.urlParam = function (key) {
     return (result ? decodeURIComponent(result[1]) : "");
 };
 
+const sid = $.urlParam("sid");
+const name = $.urlParam("name");
+
 $(document).ready(function () {
-    $("#sid").text($.urlParam("sid"));
-    $("#name").text($.urlParam("name"));
+    initScoresPage();
 
     $("form").validate({
         rules: {
@@ -54,8 +56,69 @@ $(document).ready(function () {
         errorLabelContainer: $("#err"),
 
         submitHandler: function (form) {
-
-            form.reset();
+            updateStudentScores(
+                `http://localhost:8080/students/${sid}/scores`,
+                getScoresFromForm());
         }
     });
+
+    $("form").on("reset", function (event) {
+        event.preventDefault();
+
+        $("#err").html("");
+        initScoresPage();
+    });
 });
+
+const initScoresPage = function () {
+    $("#sid").text(sid);
+    $("#name").text(name);
+    obtainAndDisplayStudentScores(
+        `http://localhost:8080/students/${sid}/scores`);
+};
+
+const obtainAndDisplayStudentScores = function (url) {
+    $.ajax({
+        url: url,
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            displayStudentScores(data);
+        }
+    });
+};
+
+const updateStudentScores = function (url, scores) {
+    $.ajax({
+        url: url,
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(scores),
+        dataType: "json",
+        statusCode: {
+            200: function () {
+                $("#msg").text(`Succeed to update course scores for student ${name}.`);
+            },
+            404: function () {
+                $("#msg").text(`Fail to update course scores for student ${name}.`);
+            }
+        }
+    });
+};
+
+const displayStudentScores = function (scores) {
+    $("input[name='mathScore']").val(scores.mathScore);
+    $("input[name='chineseScore']").val(scores.chineseScore);
+    $("input[name='englishScore']").val(scores.englishScore);
+    $("input[name='programScore']").val(scores.programScore);
+};
+
+const getScoresFromForm = function () {
+    const inputs = $("form").serializeArray();
+
+    const scores = {};
+    for (let kv of inputs) {
+        scores[kv.name] = kv.value;
+    }
+    return scores;
+};

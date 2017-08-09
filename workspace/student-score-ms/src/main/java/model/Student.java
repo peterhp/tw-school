@@ -15,19 +15,16 @@ public class Student implements Cloneable {
     private String phone;
     private String email;
 
-    private int mathScore;
-    private int chineseScore;
-    private int englishScore;
-    private int programScore;
+    private Courses courses = new Courses();
 
     public Student(String id, String name, int math, int chinese, int english, int program) {
         this.sid = id;
         this.name = name;
 
-        this.mathScore = math;
-        this.chineseScore = chinese;
-        this.englishScore = english;
-        this.programScore = program;
+        this.setMathScore(math);
+        this.setChineseScore(chinese);
+        this.setEnglishScore(english);
+        this.setProgramScore(program);
     }
 
     public Student() {
@@ -67,19 +64,19 @@ public class Student implements Cloneable {
     }
 
     public void setMathScore(int mathScore) {
-        this.mathScore = mathScore;
+        courses.setMathScore(mathScore);
     }
 
     public void setChineseScore(int chineseScore) {
-        this.chineseScore = chineseScore;
+        courses.setChineseScore(chineseScore);
     }
 
     public void setEnglishScore(int englishScore) {
-        this.englishScore = englishScore;
+        courses.setEnglishScore(englishScore);
     }
 
     public void setProgramScore(int programScore) {
-        this.programScore = programScore;
+        courses.setProgramScore(programScore);
     }
 
     public String getSid() {
@@ -115,25 +112,27 @@ public class Student implements Cloneable {
     }
 
     public int getMathScore() {
-        return mathScore;
+        return courses.getMathScore();
     }
 
     public int getChineseScore() {
-        return chineseScore;
+        return courses.getChineseScore();
     }
 
     public int getEnglishScore() {
-        return englishScore;
+        return courses.getEnglishScore();
     }
 
     public int getProgramScore() {
-        return programScore;
+        return courses.getProgramScore();
     }
 
     @Override
     public Student clone() {
         try {
-            return (Student) super.clone();
+            Student student = (Student) super.clone();
+            student.courses = this.courses.clone();
+            return student;
         } catch (CloneNotSupportedException e) {
             return new Student();
         }

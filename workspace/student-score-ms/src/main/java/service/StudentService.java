@@ -42,6 +42,11 @@ public class StudentService implements IStudentService {
         return students;
     }
 
+    @Override
+    public List<Student> getAllStudents() {
+        return klass.getAllStudents();
+    }
+
     public static Report generateReport(List<Student> students) {
         return ReportBuilder.generateReport(students);
     }

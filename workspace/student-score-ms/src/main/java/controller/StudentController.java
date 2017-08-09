@@ -7,10 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.IStudentService;
 
+import java.util.List;
+
 /**
  * Created by Shli on 07/08/2017.
  */
 @RestController
+@RequestMapping("/students")
 @CrossOrigin("*")
 public class StudentController {
 
@@ -21,13 +24,17 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @RequestMapping(value = "/students", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> addStudent(@RequestBody Student student) {
-        System.out.println(student.getSid());
         if (studentService.addStudent(student)) {
             return new ResponseEntity<Object>(HttpStatus.OK);
         } else {
             return new ResponseEntity<Object>(HttpStatus.NOT_ACCEPTABLE);
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Student> getAllStudents() {
+        return studentService.getAllStudents();
     }
 }

@@ -10,25 +10,48 @@ const TABLE_HEADER = "<tr>" +
     "</tr>";
 
 $(document).ready(function () {
-    fillStorageReportData(null);
+    initReportView();
 
     $("form").submit(function () {
         event.preventDefault();
 
         const input = $("input[name='sid-list']").val();
         if (input.length > 0) {
-            getReportFromRemote(`http://localhost:8080/reports/${input}`);
+            displayReportFromRemote(`http://localhost:8080/reports/${input}`);
         }
     });
 });
 
-const fillRemoteReportData = function (report) {
+const displayReportFromRemote = function (url) {
+    $.ajax({
+        url: url,
+        method: "GET",
+        dataType: "json",
+        statusCode: {
+            200: function (data) {
+                displayReport(data);
+            }
+        }
+    });
+};
+
+const displayReportFromStorage = function (sids) {
+    if (sids === "S003，S004") {
+        displayReport(JSON.parse(getDataInStorage(KEY_REPORT)));
+    }
+};
+
+const initReportView = function () {
+    displayReport(null);
+};
+
+const displayReport = function (report) {
     let tblView = TABLE_HEADER;
     let average = 0;
     let median = 0;
 
-    if (report != null) {
-        tblView += report.items.map(item => generateRemoteItemView(item)).join("");
+    if (report) {
+        tblView += report.items.map(item => generateItemView(item)).join("");
         average = report.averageTotalScore;
         median = report.medianTotalScore;
     }
@@ -38,54 +61,11 @@ const fillRemoteReportData = function (report) {
     $("#median-total").text(median.toString());
 };
 
-const generateRemoteItemView = function (item) {
+const generateItemView = function (item) {
     return `<tr>` +
         `<td>${item.name}</td>` +
         `<td>${item.mathScore}</td><td>${item.chineseScore}</td>` +
         `<td>${item.englishScore}</td><td>${item.programScore}</td>` +
         `<td>${item.totalScore}</td><td>${item.averageScore}</td>` +
-        `</tr>`;
-};
-
-const getReportFromRemote = function (url) {
-    $.ajax({
-        url: url,
-        method: "GET",
-        dataType: "json",
-        statusCode: {
-            200: function (data) {
-                fillRemoteReportData(data);
-            }
-        }
-    });
-};
-
-const fillStorageReportData = function (report) {
-    let tblView = TABLE_HEADER;
-    let average = 0;
-    let median = 0;
-
-    if (report != null) {
-        tblView += report.items.map(item => generateStorageItemView(item)).join("");
-        average = report.average;
-        median = report.median;
-    }
-
-    $("table").html(tblView);
-    $("#average-total").text(average.toString());
-    $("#median-total").text(median.toString());
-};
-
-const getStorageReportForStudents = function (sids) {
-    return (sids === "S003,S004" ? JSON.parse(
-            getDataInStorage(KEY_REPORT)) : null);
-};
-
-const generateStorageItemView = function (item) {
-    return `<tr>` +
-        `<td>${item.name}</td>` +
-        `<td>${item.math}</td><td>${item.chinese}</td>` +
-        `<td>${item.english}</td><td>${item.program}</td>` +
-        `<td>${item.total}</td><td>${item.average}</td>` +
         `</tr>`;
 };

@@ -11,4 +11,6 @@ public interface IStudentService {
     boolean addStudent(Student student);
 
     List<Student> findStudents(List<String> ids);
+
+    List<Student> getAllStudents();
 }

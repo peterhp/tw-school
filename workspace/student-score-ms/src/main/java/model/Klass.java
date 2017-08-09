@@ -2,7 +2,9 @@ package model;
 
 import util.CloneFactory;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,5 +23,9 @@ public class Klass {
 
     public Student getStudent(String stuId) {
         return CloneFactory.cloneStudent(students.get(stuId));
+    }
+
+    public List<Student> getAllStudents() {
+        return new ArrayList<>(students.values());
     }
 }

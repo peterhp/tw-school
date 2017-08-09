@@ -24,26 +24,26 @@ const initStorage = function () {
            {
                sid: "S003",
                name: "San",
-               math: 75,
-               chinese: 95,
-               english: 80,
-               program: 80,
-               total: 330,
-               average: 82.5
+               mathScore: 75,
+               chineseScore: 95,
+               englishScore: 80,
+               programScore: 80,
+               totalScore: 330,
+               averageScore: 82.5
            },
            {
                sid: "S004",
                name: "Si",
-               math: 85,
-               chinese: 80,
-               english: 70,
-               program: 90,
-               total: 325,
-               average: 81.25
+               mathScore: 85,
+               chineseScore: 80,
+               englishScore: 70,
+               programScore: 90,
+               totalScore: 325,
+               averageScore: 81.25
            }
        ],
-       average: 327.5,
-       median: 327.5
+       averageTotalScore: 327.5,
+       medianTotalScore: 327.5
    }));
 };
 

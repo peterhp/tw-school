@@ -2,10 +2,7 @@ package model;
 
 import util.CloneFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Shli on 27/07/2017.
@@ -27,5 +24,20 @@ public class Klass {
 
     public List<Student> getAllStudents() {
         return new ArrayList<>(students.values());
+    }
+
+    public List<Student> getStudents(List<String> ids) {
+        List<Student> matched = new LinkedList<>();
+
+        for (String id : ids) {
+            if (!students.containsKey(id)) {
+                matched.clear();
+                break;
+            }
+
+            matched.add(students.get(id));
+        }
+
+        return matched;
     }
 }

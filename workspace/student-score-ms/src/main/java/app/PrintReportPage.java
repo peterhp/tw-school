@@ -1,6 +1,6 @@
 package app;
 
-import service.StudentService;
+import service.CLIStudentService;
 import model.Student;
 import util.Parser;
 import util.ReportFormatter;
@@ -30,11 +30,11 @@ public class PrintReportPage extends Page {
         nextPage = new HomePage();
 
         return ReportFormatter.generateReportString(
-                StudentService.generateReport(students)) + "\n";
+                CLIStudentService.generateReport(students)) + "\n";
     }
 
     private List<Student> obtainStudents(String input) {
-        return StudentService.getInstance().findStudents(
+        return CLIStudentService.getInstance().findStudents(
                 Parser.parseStudentIds(input));
     }
 }

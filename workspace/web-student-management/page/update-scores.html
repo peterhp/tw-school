@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/ms-main.css">
+    <link rel="stylesheet" href="../css/add-student.css">
+</head>
+
+<body>
+
+<header></header>
+
+<section class="content">
+    <h2>Student Scores Page</h2>
+
+    <form action="#">
+
+        <table>
+            <tr>
+                <td><label>Sid: </label></td>
+                <td><label id="sid"></label></td>
+            </tr>
+
+            <tr>
+                <td><label>Name: </label></td>
+                <td><label id="name"></label></td>
+            </tr>
+
+            <tr>
+                <td><label>Math Score: </label></td>
+                <td><input name="mathScore" type="text"></td>
+            </tr>
+
+
+            <tr>
+                <td><label>Chinese Score: </label></td>
+                <td><input name="chineseScore" type="text"></td>
+            </tr>
+
+
+            <tr>
+                <td><label>English Score: </label></td>
+                <td><input name="englishScore" type="text"></td>
+            </tr>
+
+
+            <tr>
+                <td><label>Program Score</label></td>
+                <td><input name="programScore" type="text"></td>
+            </tr>
+
+        </table>
+
+        <input class="btn" type="submit" value="Submit">
+        <input class="btn" type="reset" value="Reset">
+
+    </form>
+
+    <section class="msg" id="err"></section>
+    <section class="msg" id="msg"></section>
+
+</section>
+
+<footer></footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+<script src="../js/main-layout.js"></script>
+<script src="../js/update-scores.js"></script>
+
+</body>
+
+</html>

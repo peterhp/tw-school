@@ -20,22 +20,6 @@ $(document).ready(function () {
            pid: {
                required: true,
                digits: true
-           },
-           mathScore: {
-               required: true,
-               range: [0, 100]
-           },
-           chineseScore: {
-               required: true,
-               range: [0, 100]
-           },
-           englishScore: {
-               required: true,
-               range: [0, 100]
-           },
-           programScore: {
-               required: true,
-               range: [0, 100]
            }
        },
 
@@ -55,22 +39,6 @@ $(document).ready(function () {
            pid: {
                required: "Please input your personal id.",
                digits: "Please input valid personal id."
-           },
-           mathScore: {
-               required: "Please input your score",
-               range: "Please input valid score"
-           },
-           chineseScore: {
-               required: "Please input your score",
-               range: "Please input valid score"
-           },
-           englishScore: {
-               required: "Please input your score",
-               range: "Please input valid score"
-           },
-           programScore: {
-               required: "Please input your score",
-               range: "Please input valid score"
            }
        },
 

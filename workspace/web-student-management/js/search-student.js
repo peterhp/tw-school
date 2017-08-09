@@ -7,40 +7,43 @@ const TABLE_HEADER = "<tr>" +
     "<th>personal id</th><th>native place</th><th>phone</th><th>e-mail</th>" +
     "</tr>";
 
-const students = JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
+const students = obtainStudentsFromStorage();
 
 $(document).ready(function () {
-    fillTableWithStudentsView(generateStudentsView(students));
+    displayStudentList(students);
 
     $("form").submit(function (event) {
         event.preventDefault();
 
         const input = $("input[name='search']").val();
         if (input.length > 0) {
-            fillTableWithStudentsView(generateStudentsView(
-                    findStudentsByIdOrName(input)));
+            displayStudentList(findStudentsByIdOrName(input));
         }
     });
 });
 
-const fillTableWithStudentsView = function (htmlView) {
-    $("table").html(TABLE_HEADER + htmlView);
+const obtainStudentsFromStorage = function () {
+    return JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
 };
 
 const findStudentsByIdOrName = function (value) {
     return students.filter(student =>
-            student.sid === value || student.name === value);
+    student.sid === value || student.name === value);
 };
 
-const generateStudentsView = function (students) {
-    return students.map(stu => generateStudentTrView(stu)).join("");
+const displayStudentList = function (studentList) {
+    $("table").html(TABLE_HEADER + generateStudentListView(studentList));
 };
 
-const generateStudentTrView = function (student) {
+const generateStudentListView = function (studentList) {
+    return studentList.map(stu => generateStudentItemView(stu)).join("");
+};
+
+const generateStudentItemView = function (student) {
     return `<tr>` +
         `<td>${student.sid}</td><td>${student.name}</td>` +
-        `<td>${student.gender}</td><td>${student.class}</td>`+
-        `<td>${student.pid}</td><td>${student.native}</td>` +
+        `<td>${student.gender}</td><td>${student.klass}</td>`+
+        `<td>${student.personalId}</td><td>${student.nativePlace}</td>` +
         `<td>${student.phone}</td><td>${student.email}</td>` +
         `</tr>`;
 };

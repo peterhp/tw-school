@@ -1,9 +1,16 @@
 /**
  * Created by Shli on 09/08/2017.
  */
+
+$.urlParam = function (key) {
+    const regex = new RegExp(`[\?&]${key}=([^&]*)`);
+    const result = regex.exec(window.location.href);
+    return (result ? decodeURIComponent(result[1]) : "");
+};
+
 $(document).ready(function () {
-    $("#sid").text("S001");
-    $("#name").text("yi");
+    $("#sid").text($.urlParam("sid"));
+    $("#name").text($.urlParam("name"));
 
     $("form").validate({
         rules: {

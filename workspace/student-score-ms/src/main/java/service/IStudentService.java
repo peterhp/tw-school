@@ -17,4 +17,6 @@ public interface IStudentService {
     List<Student> getAllStudents();
 
     Courses getStudentScores(String sid) throws UnexistedStudentException;
+
+    void updateStudentScores(String sid, Courses courses) throws UnexistedStudentException;
 }

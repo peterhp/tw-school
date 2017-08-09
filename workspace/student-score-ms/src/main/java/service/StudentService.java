@@ -40,11 +40,19 @@ public class StudentService implements IStudentService {
 
     @Override
     public Courses getStudentScores(String sid) throws UnexistedStudentException {
-        Student student = klass.getStudent(sid);
-        if (student == null) {
+        if (!klass.contains(sid)) {
             throw new UnexistedStudentException();
         }
 
-        return student.getCourses();
+        return klass.getStudent(sid).getCourses();
+    }
+
+    @Override
+    public void updateStudentScores(String sid, Courses courses) throws UnexistedStudentException {
+        if (!klass.contains(sid)) {
+            throw new UnexistedStudentException();
+        }
+
+        klass.updateStudentCourses(sid, courses);
     }
 }

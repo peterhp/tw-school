@@ -44,4 +44,10 @@ public class StudentController {
     public Courses getStudentScores(@PathVariable("sid") String sid) throws Exception {
         return studentService.getStudentScores(sid);
     }
+
+    @RequestMapping(value = "/{sid}/scores", method = RequestMethod.PUT)
+    public void updateStudentScores(@PathVariable("sid") String sid,
+            @RequestBody Courses courses) throws Exception {
+         studentService.updateStudentScores(sid, courses);
+    }
 }

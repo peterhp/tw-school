@@ -40,4 +40,15 @@ public class Klass {
 
         return matched;
     }
+
+    public boolean contains(String sid) {
+        return students.containsKey(sid);
+    }
+
+    public void updateStudentCourses(String sid, Courses courses) {
+        Student student = students.get(sid);
+        if (student != null) {
+            student.setCourses(courses);
+        }
+    }
 }

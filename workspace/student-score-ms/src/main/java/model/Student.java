@@ -79,6 +79,10 @@ public class Student implements Cloneable {
         courses.setProgramScore(programScore);
     }
 
+    public void setCourses(Courses courses) {
+        this.courses = courses;
+    }
+
     public String getSid() {
         return sid;
     }

@@ -3,6 +3,7 @@ package service;
 import model.Klass;
 import model.Report;
 import model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.ReportBuilder;
 
@@ -18,11 +19,19 @@ public class StudentService implements IStudentService {
 
     private Klass klass = new Klass();
 
+    private ISidGeneratorService sidGenerator;
+
+    @Autowired
+    public void setSidGenerator(ISidGeneratorService sidGenerator) {
+        this.sidGenerator = sidGenerator;
+    }
+
     private StudentService() {
 
     }
 
     public boolean addStudent(Student student) {
+        student.setSid(sidGenerator.getAvailableSid());
         return klass.addStudent(student);
     }
 

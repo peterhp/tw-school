@@ -77,39 +77,15 @@ $(document).ready(function () {
        errorLabelContainer: $("#err"),
 
        submitHandler: function (form) {
-           const student = getStudentInformationForStorage();
+           const student = generateStudentForStorage();
            saveStudentInStorage(student);
+
            submitToRemote("http://localhost:8080/students", student);
 
            form.reset();
        }
    });
 });
-
-const submitToStorage = function () {
-    const student = getStudentInformationForStorage();
-    saveStudentInStorage(student);
-    $("#msg").text(`Succeed to append student [${student.sid}: ${student.name}].`);
-};
-
-const saveStudentInStorage = function (newStudent) {
-    const students = JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
-
-    students.push(newStudent);
-    saveDataInStorage(KEY_STUDENT_LIST, JSON.stringify(students));
-};
-
-const getStudentInformationForStorage = function () {
-    const student = generateStudentFromForm();
-    student.sid = generateSidForNewStudentFromStorage();
-    return student;
-};
-
-const generateSidForNewStudentFromStorage = function () {
-    const sid = parseInt(getDataInStorage(KEY_CURRENT_SID)) + 1;
-    saveDataInStorage(KEY_CURRENT_SID, sid.toString());
-    return `S${sid}`;
-};
 
 const submitToRemote = function (url, student) {
     $.ajax({
@@ -127,6 +103,31 @@ const submitToRemote = function (url, student) {
             }
         }
     });
+};
+
+const submitToStorage = function () {
+    const student = generateStudentForStorage();
+    saveStudentInStorage(student);
+    $("#msg").text(`Succeed to append student [${student.name}].`);
+};
+
+const saveStudentInStorage = function (newStudent) {
+    const students = JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
+
+    students.push(newStudent);
+    saveDataInStorage(KEY_STUDENT_LIST, JSON.stringify(students));
+};
+
+const generateStudentForStorage = function () {
+    const student = generateStudentFromForm();
+    student.sid = generateSidFromStorage();
+    return student;
+};
+
+const generateSidFromStorage = function () {
+    const sid = parseInt(getDataInStorage(KEY_CURRENT_SID)) + 1;
+    saveDataInStorage(KEY_CURRENT_SID, sid.toString());
+    return `S${sid}`;
 };
 
 const generateStudentFromForm = function () {

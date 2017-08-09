@@ -1,5 +1,7 @@
 package service;
 
+import exception.UnexistedStudentException;
+import model.Courses;
 import model.Klass;
 import model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +36,15 @@ public class StudentService implements IStudentService {
     @Override
     public List<Student> getAllStudents() {
         return klass.getAllStudents();
+    }
+
+    @Override
+    public Courses getStudentScores(String sid) throws UnexistedStudentException {
+        Student student = klass.getStudent(sid);
+        if (student == null) {
+            throw new UnexistedStudentException();
+        }
+
+        return student.getCourses();
     }
 }

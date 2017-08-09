@@ -1,5 +1,7 @@
 package service;
 
+import exception.UnexistedStudentException;
+import model.Courses;
 import model.Student;
 
 import java.util.List;
@@ -13,4 +15,6 @@ public interface IStudentService {
     List<Student> findStudents(List<String> ids);
 
     List<Student> getAllStudents();
+
+    Courses getStudentScores(String sid) throws UnexistedStudentException;
 }

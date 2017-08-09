@@ -1,5 +1,7 @@
 package controller;
 
+import exception.UnexistedStudentException;
+import model.Courses;
 import model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,5 +38,10 @@ public class StudentController {
     @RequestMapping(method = RequestMethod.GET)
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
+    }
+
+    @RequestMapping(value = "/{sid}/scores", method = RequestMethod.GET)
+    public Courses getStudentScores(@PathVariable("sid") String sid) throws Exception {
+        return studentService.getStudentScores(sid);
     }
 }

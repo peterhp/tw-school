@@ -127,6 +127,10 @@ public class Student implements Cloneable {
         return courses.getProgramScore();
     }
 
+    public Courses getCourses() {
+        return courses;
+    }
+
     @Override
     public Student clone() {
         try {

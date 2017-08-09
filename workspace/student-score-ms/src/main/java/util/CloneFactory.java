@@ -1,6 +1,6 @@
 package util;
 
-import data.Student;
+import model.Student;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,7 +1,7 @@
 package app;
 
 import service.StudentService;
-import data.Student;
+import model.Student;
 import util.Parser;
 
 /**

@@ -1,6 +1,6 @@
 package controller;
 
-import data.Report;
+import model.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

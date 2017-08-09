@@ -1,8 +1,8 @@
 package service;
 
-import data.Klass;
-import data.Report;
-import data.Student;
+import model.Klass;
+import model.Report;
+import model.Student;
 import org.springframework.stereotype.Service;
 import util.ReportBuilder;
 

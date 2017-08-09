@@ -1,7 +1,7 @@
 package util;
 
-import data.Report;
-import data.ReportItem;
+import model.Report;
+import model.ReportItem;
 
 /**
  * Created by Shli on 28/07/2017.

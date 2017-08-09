@@ -1,8 +1,8 @@
 package util;
 
-import data.Report;
-import data.ReportItem;
-import data.Student;
+import model.Report;
+import model.ReportItem;
+import model.Student;
 
 import java.util.List;
 import java.util.stream.Collectors;

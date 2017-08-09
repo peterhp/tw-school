@@ -1,6 +1,6 @@
-import data.Report;
-import data.ReportItem;
-import data.Student;
+import model.Report;
+import model.ReportItem;
+import model.Student;
 import org.junit.Test;
 import util.ReportBuilder;
 import util.ReportFormatter;

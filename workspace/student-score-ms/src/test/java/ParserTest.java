@@ -1,4 +1,4 @@
-import data.Student;
+import model.Student;
 import org.junit.Test;
 import util.Parser;
 

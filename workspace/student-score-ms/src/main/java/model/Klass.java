@@ -1,4 +1,6 @@
-package data;
+package model;
+
+import util.CloneFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +20,6 @@ public class Klass {
     }
 
     public Student getStudent(String stuId) {
-        return students.get(stuId);
+        return CloneFactory.cloneStudent(students.get(stuId));
     }
 }

@@ -1,7 +1,7 @@
 package service;
 
-import data.Report;
-import data.Student;
+import model.Report;
+import model.Student;
 import exception.InvalidStudentIdsFormatException;
 import exception.UnexistedStudentException;
 import org.springframework.beans.factory.annotation.Autowired;

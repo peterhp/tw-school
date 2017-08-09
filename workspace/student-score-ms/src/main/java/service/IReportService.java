@@ -1,6 +1,6 @@
 package service;
 
-import data.Report;
+import model.Report;
 import exception.InvalidStudentIdsFormatException;
 import exception.UnexistedStudentException;
 

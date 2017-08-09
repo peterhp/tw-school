@@ -1,6 +1,6 @@
 package util;
 
-import data.Student;
+import model.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;

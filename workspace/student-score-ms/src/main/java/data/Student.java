@@ -3,7 +3,7 @@ package data;
 /**
  * Created by Shli on 27/07/2017.
  */
-public class Student {
+public class Student implements Cloneable {
     private String sid;
     private String name;
 
@@ -20,11 +20,11 @@ public class Student {
     private int englishScore;
     private int programScore;
 
-    public Student(String id, String name, int mathScore, int chinese, int english, int program) {
+    public Student(String id, String name, int math, int chinese, int english, int program) {
         this.sid = id;
         this.name = name;
 
-        this.mathScore = mathScore;
+        this.mathScore = math;
         this.chineseScore = chinese;
         this.englishScore = english;
         this.programScore = program;
@@ -128,5 +128,14 @@ public class Student {
 
     public int getProgramScore() {
         return programScore;
+    }
+
+    @Override
+    public Student clone() {
+        try {
+            return (Student) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Student();
+        }
     }
 }

@@ -17,6 +17,7 @@ $(document).ready(function () {
 
         const input = $("input[name='sid-list']").val();
         if (input.length > 0) {
+            initReportView();
             displayReportFromRemote(`http://localhost:8080/reports/${input}`);
         }
     });

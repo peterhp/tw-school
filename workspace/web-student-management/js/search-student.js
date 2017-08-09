@@ -7,10 +7,11 @@ const TABLE_HEADER = "<tr>" +
     "<th>personal id</th><th>native place</th><th>phone</th><th>e-mail</th>" +
     "</tr>";
 
-const students = obtainStudentsFromStorage();
+let students = null;
 
 $(document).ready(function () {
     displayStudentList(students);
+    obtainAndDisplayStudentsFromRemote("http://localhost:8080/students");
 
     $("form").submit(function (event) {
         event.preventDefault();
@@ -22,8 +23,23 @@ $(document).ready(function () {
     });
 });
 
-const obtainStudentsFromStorage = function () {
-    return JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
+const obtainAndDisplayStudentsFromRemote = function (url) {
+    $.ajax({
+        url: url,
+        method: "GET",
+        dataType: "json",
+        statusCode: {
+            200: function (data) {
+                students = data;
+                displayStudentList(students);
+            }
+        }
+    });
+};
+
+const obtainAndDisplayStudentsFromStorage = function () {
+    students = JSON.parse(getDataInStorage(KEY_STUDENT_LIST));
+    displayStudentList(students);
 };
 
 const findStudentsByIdOrName = function (value) {
@@ -36,7 +52,8 @@ const displayStudentList = function (studentList) {
 };
 
 const generateStudentListView = function (studentList) {
-    return studentList.map(stu => generateStudentItemView(stu)).join("");
+    return (studentList ?
+        studentList.map(stu => generateStudentItemView(stu)).join("") : "");
 };
 
 const generateStudentItemView = function (student) {

@@ -29,21 +29,4 @@ public class CloneTest {
         assertThat(student.getName(), is("yi"));
         assertThat(copied.getName(), is("er"));
     }
-
-    @Test
-    public void should_clone_list_and_students_within_it() throws Exception {
-        // given
-        List<Student> list = Arrays.asList(
-                new Student("S001", "yi", 80, 80, 80, 80));
-
-        // when
-        List<Student> copied = CloneFactory.cloneStudentList(list);
-
-        // then
-        assertThat(copied == list, is(false));
-        assertThat(copied.size(), is(list.size()));
-
-        assertThat(copied.get(0) == list.get(0), is(false));
-        assertThat(copied.get(0).getSid(), is(list.get(0).getSid()));
-    }
 }

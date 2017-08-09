@@ -11,12 +11,6 @@ import java.util.stream.Collectors;
 public class CloneFactory {
 
     public static Student cloneStudent(Student student) {
-        return student.clone();
-    }
-
-    public static List<Student> cloneStudentList(List<Student> studentList) {
-        return studentList.stream()
-                .map(student -> student.clone())
-                .collect(Collectors.toList());
+        return (student != null ? student.clone() : null);
     }
 }

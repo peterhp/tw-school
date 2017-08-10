@@ -1,10 +1,17 @@
 package model;
 
+import javax.persistence.*;
+
 /**
  * Created by Shli on 27/07/2017.
  */
+@Entity
 public class Student implements Cloneable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String sid;
+
     private String name;
 
     private String gender;
@@ -15,6 +22,7 @@ public class Student implements Cloneable {
     private String phone;
     private String email;
 
+    @OneToOne(cascade = CascadeType.ALL )
     private Courses courses = new Courses();
 
     public Student(String id, String name, int math, int chinese, int english, int program) {

@@ -1,12 +1,15 @@
 package service;
 
+import dc.StudentMemoryStorage;
 import exception.UnexistedStudentException;
 import model.Courses;
-import dc.StudentMemoryStorage;
 import model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import repo.StudentRepository;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,28 +17,33 @@ import java.util.List;
  */
 @Service
 public class StudentService implements IStudentService {
-    private StudentMemoryStorage studentStorage = new StudentMemoryStorage();
-
-    private ISidGeneratorService sidGenerator;
 
     @Autowired
-    public void setSidGenerator(ISidGeneratorService sidGenerator) {
-        this.sidGenerator = sidGenerator;
-    }
+    private StudentRepository studentRepository;
+
+    private StudentMemoryStorage studentStorage = new StudentMemoryStorage();
 
     public boolean addStudent(Student student) {
-        student.setSid(sidGenerator.getAvailableSid());
-        return studentStorage.addStudent(student);
+        studentRepository.save(student);
+        return true;
     }
 
     @Override
     public List<Student> findStudents(List<String> ids) {
-        return studentStorage.getStudents(ids);
+        List<Student> students = new LinkedList<>();
+        studentRepository.findAll(ids).forEach(students::add);
+
+        if (students.size() != ids.size()) {
+            students.clear();
+        }
+        return students;
     }
 
     @Override
     public List<Student> getAllStudents() {
-        return studentStorage.getAllStudents();
+        List<Student> students = new LinkedList<>();
+        studentRepository.findAll().forEach(students::add);
+        return students;
     }
 
     @Override

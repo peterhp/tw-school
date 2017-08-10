@@ -1,9 +1,20 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by Shli on 09/08/2017.
  */
+@Entity
 public class Courses implements Cloneable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long cid;
+
     private int mathScore = 0;
     private int chineseScore = 0;
     private int englishScore = 0;

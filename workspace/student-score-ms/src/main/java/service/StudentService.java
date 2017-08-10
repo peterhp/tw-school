@@ -48,19 +48,21 @@ public class StudentService implements IStudentService {
 
     @Override
     public Courses getStudentScores(String sid) throws UnexistedStudentException {
-        if (!studentStorage.contains(sid)) {
+        if (!studentRepository.exists(sid)) {
             throw new UnexistedStudentException();
         }
 
-        return studentStorage.getStudent(sid).getCourses();
+        return studentRepository.findOne(sid).getCourses();
     }
 
     @Override
     public void updateStudentScores(String sid, Courses courses) throws UnexistedStudentException {
-        if (!studentStorage.contains(sid)) {
+        if (!studentRepository.exists(sid)) {
             throw new UnexistedStudentException();
         }
 
-        studentStorage.updateStudentCourses(sid, courses);
+        Student student = studentRepository.findOne(sid);
+        student.setCourses(courses);
+        studentRepository.save(student);
     }
 }

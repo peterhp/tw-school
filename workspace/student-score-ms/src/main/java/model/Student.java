@@ -22,7 +22,7 @@ public class Student implements Cloneable {
     private String phone;
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL )
+    @OneToOne(cascade = CascadeType.ALL)
     private Courses courses = new Courses();
 
     public Student(String id, String name, int math, int chinese, int english, int program) {

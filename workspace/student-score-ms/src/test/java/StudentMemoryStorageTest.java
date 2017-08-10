@@ -1,4 +1,4 @@
-import model.Klass;
+import dc.StudentMemoryStorage;
 import model.Student;
 import org.junit.Test;
 
@@ -8,19 +8,19 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by Shli on 27/07/2017.
  */
-public class KlassTest {
+public class StudentMemoryStorageTest {
     @Test
     public void should_succeed_to_add_new_student_into_class() throws Exception {
         // given
         Student student = new Student("S003", "张三", 75, 95, 80, 80);
-        Klass klass = new Klass();
+        StudentMemoryStorage studentStorage = new StudentMemoryStorage();
 
         // when
-        boolean flag = klass.addStudent(student);
+        boolean flag = studentStorage.addStudent(student);
 
         // then
         assertThat(flag, is(true));
-        assertThat(klass.getStudent("S003").getName(), is("张三"));
+        assertThat(studentStorage.getStudent("S003").getName(), is("张三"));
     }
 
     @Test
@@ -28,11 +28,11 @@ public class KlassTest {
         // given
         Student student = new Student("S003", "张三", 75, 95, 80, 80);
 
-        Klass klass = new Klass();
-        klass.addStudent(new Student("S003", "张三", 75, 95, 80, 80));
+        StudentMemoryStorage studentStorage = new StudentMemoryStorage();
+        studentStorage.addStudent(new Student("S003", "张三", 75, 95, 80, 80));
 
         // when
-        boolean flag = klass.addStudent(student);
+        boolean flag = studentStorage.addStudent(student);
 
         // then
         assertThat(flag, is(false));

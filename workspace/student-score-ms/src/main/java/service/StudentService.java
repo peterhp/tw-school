@@ -2,7 +2,7 @@ package service;
 
 import exception.UnexistedStudentException;
 import model.Courses;
-import model.Klass;
+import dc.StudentMemoryStorage;
 import model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Service
 public class StudentService implements IStudentService {
-    private Klass klass = new Klass();
+    private StudentMemoryStorage studentStorage = new StudentMemoryStorage();
 
     private ISidGeneratorService sidGenerator;
 
@@ -25,34 +25,34 @@ public class StudentService implements IStudentService {
 
     public boolean addStudent(Student student) {
         student.setSid(sidGenerator.getAvailableSid());
-        return klass.addStudent(student);
+        return studentStorage.addStudent(student);
     }
 
     @Override
     public List<Student> findStudents(List<String> ids) {
-        return klass.getStudents(ids);
+        return studentStorage.getStudents(ids);
     }
 
     @Override
     public List<Student> getAllStudents() {
-        return klass.getAllStudents();
+        return studentStorage.getAllStudents();
     }
 
     @Override
     public Courses getStudentScores(String sid) throws UnexistedStudentException {
-        if (!klass.contains(sid)) {
+        if (!studentStorage.contains(sid)) {
             throw new UnexistedStudentException();
         }
 
-        return klass.getStudent(sid).getCourses();
+        return studentStorage.getStudent(sid).getCourses();
     }
 
     @Override
     public void updateStudentScores(String sid, Courses courses) throws UnexistedStudentException {
-        if (!klass.contains(sid)) {
+        if (!studentStorage.contains(sid)) {
             throw new UnexistedStudentException();
         }
 
-        klass.updateStudentCourses(sid, courses);
+        studentStorage.updateStudentCourses(sid, courses);
     }
 }

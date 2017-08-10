@@ -1,6 +1,6 @@
 package service;
 
-import model.Klass;
+import dc.StudentMemoryStorage;
 import model.Report;
 import model.Student;
 import util.ReportBuilder;
@@ -13,18 +13,18 @@ import java.util.List;
 public class CLIStudentService {
     private static CLIStudentService instance = new CLIStudentService();
 
-    private Klass klass = new Klass();
+    private StudentMemoryStorage studentStorage = new StudentMemoryStorage();
 
     private CLIStudentService() {
 
     }
 
     public boolean addStudent(Student student) {
-        return klass.addStudent(student);
+        return studentStorage.addStudent(student);
     }
 
     public List<Student> findStudents(List<String> ids) {
-        return klass.getStudents(ids);
+        return studentStorage.getStudents(ids);
     }
 
     public static Report generateReport(List<Student> students) {

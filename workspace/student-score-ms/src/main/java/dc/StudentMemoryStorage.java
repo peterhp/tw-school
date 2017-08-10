@@ -1,5 +1,7 @@
-package model;
+package dc;
 
+import model.Courses;
+import model.Student;
 import util.CloneFactory;
 
 import java.util.*;
@@ -7,7 +9,7 @@ import java.util.*;
 /**
  * Created by Shli on 27/07/2017.
  */
-public class Klass {
+public class StudentMemoryStorage {
     private Map<String, Student> students = new HashMap<>();
 
     public boolean addStudent(Student student) {
